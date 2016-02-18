@@ -1,0 +1,114 @@
+@import 'bourbon/app/assets/stylesheets/_bourbon.scss'
+@import 'bourbon-neat/app/assets/stylesheets/_neat.scss'
+@import '_variables.sass'
+
+body
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif
+  font-weight: 300
+  -webkit-font-smoothing: antialiased
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6
+  font-family: "Lucida Bright", Georgia, serif
+  font-weight: 400
+
+img
+  vertical-align: top
+
+.headings,
+.skills,
+.call-to-action,
+.photos,
+.about,
+.last-blog-posts,
+.last-codepens,
+.footer-main
+  text-align: center
+
+.headings
+  z-index: 150
+
+  p.main
+    color: $porcelain
+    font-size: modular-scale(1)
+
+    span
+      color: $carminePink
+  p
+    color: shade($porcelain, 40%)
+    font-size: modular-scale(0)
+
+.nav-link
+  line-height: 4em
+  verical-align: middle
+  text-align: center
+  text-transform: uppercase
+  font-size: modular-scale(-1)
+  font-weight: 700
+
+.skills
+  @at-root #{&}__icon
+    font-size: modular-scale(4)
+  @at-root #{&}__skill
+    font-size: modular-scale(0)
+    margin-bottom: 2em
+    padding: 0.5em
+
+    h3
+      margin: 0.5em
+
+.about
+  h1
+    padding: 4em 0 1em 0
+  p
+    font-size: modular-scale(0)
+    padding: 0 1em 3em 1em
+
+
+.last-blog-posts
+  .post
+    margin-top: 1em
+    padding: 0 0.5em
+  .heading
+    margin-bottom: 3em
+
+  .post-head
+    margin-bottom: 1em
+
+  h3
+    color: $pickledBluewood
+
+  .date
+    font-size: modular-scale(-2)
+
+.last-codepens
+  .codepens-header
+    margin: 3em auto
+
+  .pen
+    margin-top: 2em
+
+    h3
+      padding-top: 0.5em
+      a
+        color: $pickledBluewood
+
+  .pen-date
+    font-size: modular-scale(-2)
+
+.contact
+  form
+    max-width: 40em
+    margin: 0 auto
+  h2
+    margin: 3em auto
+    padding-top: 3em
+    color: $athensGray
+
+.footer-main
+  .copy
+    padding-bottom: 3em

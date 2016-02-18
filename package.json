@@ -1,0 +1,26 @@
+{
+  "name": "home",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-eslint": "^4.1.6",
+    "bourbon": "^4.2.6",
+    "bourbon-neat": "^1.7.2",
+    "browser-sync": "^2.11.0",
+    "eslint": "^1.10.3",
+    "eslint-config-airbnb": "^3.1.0",
+    "gulp": "^3.9.0",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-compass": "^2.1.0",
+    "gulp-jade": "^1.1.0",
+    "gulp-modernizr": "0.0.0",
+    "gulp-print": "^2.0.1",
+    "gulp-sass": "^2.1.1"
+  }
+}

@@ -1,0 +1,159 @@
+---
+layout: default
+permalink: /
+title: "Krzysztof Miąsko"
+---
+
+
+<main id="main">
+  <section class="landing-page">
+    <section class="headings">
+      <figure><img src="img/lambda.svg"></figure>
+      <p class="main">_.join(_.identity(<span>Krzysztof</span>), _.identity(<span>Miąsko</span>))</p>
+      <p>Full Stack Developer</p>
+    </section>
+    <section class="next-arrow"><a href="#skills"></a></section>
+  </section>
+  <section id="skills" class="skills">
+    <article class="skills__skill">
+      <div class="skills__icon"><span class="icon-mobile"></span></div>
+      <h3>Strony WWW</h3>
+      <p>Wizytówki firm, strony osobiste, katalogi produktów - przygotowane wedle potrzeb klienta, dostosowane do indywidualnych wymagań i preferencji.</p>
+    </article>
+    <article class="skills__skill">
+      <div class="skills__icon"><span class="icon-browser"></span></div>
+      <h3>Single Page Applications</h3>
+      <p>"Jednostronicowe" aplikacje internetowe, oparte o RESTful API, mogące wykorzysytwać systemy baz danych.</p>
+    </article>
+    <article class="skills__skill">
+      <div class="skills__icon"><span class="icon-layers"></span></div>
+      <h3>Full Stack Applications</h3>
+      <p>Wielopłaszczyznowe aplikacje i serwisy internetowe oparte o systemy baz danych, RESTful API, mikro-serwisy</p>
+    </article>
+    <article class="skills__skill">
+      <div class="skills__icon"><span class="icon-picture"></span></div>
+      <h3>Profesjonalny design</h3>
+      <p><em>Nowoczesny</em>, przejrzysty design stron WWW i aplikacji, dostosowany do przeglądarek jak i urządzeń mobilnych (Mobile-First Responsive Web Design).</p>
+    </article>
+    <article class="skills__skill">
+      <div class="skills__icon"><span class="icon-gears"></span></div>
+      <h3>Niezawodność</h3>
+      <p>Produkty są przetestowane, przygotowywane zgodnie ze sprawdzonymi metodologiami programowania.</p>
+    </article>
+    <article class="skills__skill">
+      <div class="skills__icon"><span class="icon-genius"></span></div>
+      <h3>Dobrej jakości kod</h3>
+      <p>
+        Czysty, przejrzysty i <em>dobrze udokumentowany</em> kod pozwoli na <strong>bezstresowe wprowadzanie zmian</strong> i rozwój aplikacji.
+
+      </p>
+    </article>
+  </section>
+  <section id="about" class="about">
+    <h1>Krzysztof Miąsko</h1>
+    <article class="portraiture">
+      <figure><img src="img/kmiasko.jpg" alt="Krzysztof Miąsko"></figure>
+      <p>
+        Jestem pasjonatem wszystkiego co związane z informatyką. Tworzę <strong>nowoczesne</strong> strony WWW oraz bogate, interaktywne aplikacje internetowe z wykorzystaniem takich języków jak HTML5, CSS3, JavaScript, bibliotek jQuery oraz Bootstrap. Potrafię tworzyć aplikacje oparte na <strong>React i Flux</strong>.
+
+      </p>
+    </article>
+  </section>
+  <section id="portfolio" class="portfolio">
+    <h2>Realizacje</h2>
+    {% for portfolio in site.portfolios reversed %}
+    <div class="portfolio-item">
+      <div class="portfolio-img">
+        <figure><img src="{{ portfolio.image }}">
+          <div class="p-item-hover"><a href="{{ portfolio.link }}" target="_blank"><i class="fa fa-2x fa-anchor"></i></a></div>
+        </figure>
+      </div>
+      <div class="portfolio-desc">
+        <h3>{{ portfolio.title }}</h3>
+        <p>{{ portfolio.description }}</p>
+      </div>
+    </div>
+    {% endfor %}
+  </section>
+  <section class="call-to-action">
+    <h2>Zainteresowan[ya]?</h2>
+    <p><a href="#contact">Napisz do mnie!</a></p>
+  </section>
+  <section id="last-blog-posts" class="last-blog-posts">
+    <header class="heading">
+      <h2>Ostatnie wpisy na blogu</h2>
+      <p><a href="/blog">Pokaż wszystkie wpisy</a></p>
+    </header>
+    <article class="post">
+      <header class="post-head">
+        <figure><a href=""><img src="http://placehold.it/500x300" alt="Blog Post"></a></figure><a href="">
+          <h3>Lorem Ipsum.</h3></a><span class="date">02.01.2016</span>
+      </header>
+      <p class="post-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est quisquam illo magnam itaque hic culpa beatae neque dolores architecto dicta repellendus voluptate atque debitis sapiente molestiae cumque omnis, doloribus porro.</p>
+    </article>
+    <article class="post">
+      <header class="post-head">
+        <figure><a href=""><img src="http://placehold.it/500x300" alt="Blog Post"></a></figure><a href="">
+          <h3>Lorem Ipsum.</h3></a><span class="date">02.01.2016</span>
+      </header>
+      <p class="post-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est quisquam illo magnam itaque hic culpa beatae neque dolores architecto dicta repellendus voluptate atque debitis sapiente molestiae cumque omnis, doloribus porro.</p>
+    </article>
+    <article class="post">
+      <header class="post-head">
+        <figure><a href=""><img src="http://placehold.it/500x300" alt="Blog Post"></a></figure><a href="">
+          <h3>Lorem Ipsum.</h3></a><span class="date">02.01.2016</span>
+      </header>
+      <p class="post-content">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est quisquam illo magnam itaque hic culpa beatae neque dolores architecto dicta repellendus voluptate atque debitis sapiente molestiae cumque omnis, doloribus porro.
+
+      </p>
+    </article>
+  </section>
+  <section class="last-codepens">
+    <header class="codepens-header">
+      <h2>Ostatnie peny</h2>
+    </header>
+    <article class="pen">
+      <figure class="pen-image"><a href="" target="_blank"><img src="http://placehold.it/300x150" alt="Pen"></a></figure>
+      <h3><a href="" target="_blank">Lorem ipsum.</a></h3><span class="pen-date">01.02.2016</span>
+    </article>
+    <article class="pen">
+      <figure class="pen-image"><a href="" target="_blank"><img src="http://placehold.it/300x150" alt="Pen"></a></figure>
+      <h3><a href="" target="_blank">Lorem ipsum.</a></h3><span class="pen-date">01.02.2016</span>
+    </article>
+    <article class="pen">
+      <figure class="pen-image"><a href="" target="_blank"><img src="http://placehold.it/300x150" alt="Pen"></a></figure>
+      <h3><a href="" target="_blank">Lorem ipsum.</a></h3><span class="pen-date">01.02.2016</span>
+    </article>
+    <article class="pen">
+      <figure class="pen-image"><a href="" target="_blank"><img src="http://placehold.it/300x150" alt="Pen"></a></figure>
+      <h3><a href="" target="_blank">Lorem ipsum.</a></h3><span class="pen-date">01.02.2016</span>
+    </article>
+    <article class="pen">
+      <figure class="pen-image"><a href="" target="_blank"><img src="http://placehold.it/300x150" alt="Pen"></a></figure>
+      <h3><a href="" target="_blank">Lorem ipsum.</a></h3><span class="pen-date">01.02.2016</span>
+    </article>
+    <article class="pen">
+      <figure class="pen-image"><a href="" target="_blank"><img src="http://placehold.it/300x150" alt="Pen"></a></figure>
+      <h3><a href="" target="_blank">Lorem ipsum..</a></h3><span class="pen-date">01.02.2016</span>
+    </article>
+  </section>
+  <section id="contact" class="contact">
+    <h2>Skontaktuj się</h2>
+    <form action="//formspree.io/kmiasko@gmail.com" method="POST">
+      <div class="wrapper">
+        <figcaption></figcaption>
+      </div>
+      <div class="inputs">
+        <input type="text" name="name" placeholder="Imię i nazwisko" required>
+        <input type="email" name="_replyto" placeholder="Email" required>
+        <input type="hidden" name="_next" value="//kmiasko.github.io/thanks/">
+        <input type="hidden" name="_subject" value="Nowa wiadomość ze strony kmiasko.github.io">
+        <input type="text" name="_gotcha" style="display:none">
+      </div>
+      <div class="textarea">
+        <textarea name="message" cols="30" rows="4" placeholder="Wiadomość" required></textarea>
+        <input type="submit" value="Wyślij wiadomość">
+      </div>
+    </form>
+  </section>

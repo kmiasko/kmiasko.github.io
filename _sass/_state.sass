@@ -1,0 +1,120 @@
+@import 'bourbon/app/assets/stylesheets/_bourbon.scss'
+@import 'bourbon-neat/app/assets/stylesheets/_neat.scss'
+@import 'variables'
+
+@mixin omega-reset($nth)
+  &:nth-child(#{$nth})
+    margin-right: flex-gutter($grid-columns, $gutter)
+  &:nth-child(#{$nth}+1)
+    clear: none
+
+.navbar
+  +media($mobile)
+    +size(100% 3em)
+    .hamburger
+      display: none
+
+  &.nav-open
+    +size(100% auto)
+
+.nav
+  +media($mobile)
+    +size(80% 3em)
+    +padding(0 4em 0 0)
+    +margin(0 5em 0 auto)
+    text-indent: 0
+
+    .nav-links
+      +size(auto)
+      float: right
+
+    .nav-link
+      display: inline-block
+      +size(auto)
+      float: left
+
+      li
+        +padding(0.2em 0.5em)
+
+    +media($tablet)
+      +padding(0)
+      +margin(0 auto)
+
+.nav-open
+  .nav
+    +size(100%)
+    text-indent: 0
+
+.headings
+  +media($tablet)
+    p
+      font-size: modular-scale(0)
+    p.main
+      font-size: modular-scale(2)
+
+.skills
+  +media($tablet)
+    @at-root #{&}__skill
+      +span-columns(4)
+      +omega(3n)
+
+.photos
+  +media($tablet)
+    .photo
+      +span-columns(6)
+      +omega(2n)
+
+.photos
+  +media($desktop)
+    +row
+    .photo
+      width: 25%
+      margin: 0
+      float: left
+
+      &:nth-child(2n+1)
+        clear: none
+      &:nth-child(4n+1)
+        clear: left
+
+.last-blog-posts
+  +media($tablet)
+    .post
+      +span-columns(4)
+      +omega(4n)
+
+.last-codepens
+  +media($tablet)
+    .pen
+      +span-columns(4)
+      +omega(4n)
+
+.portfolio
+  +media($tablet)
+    .portfolio-item
+      position: relative
+      +clearfix
+
+      .portfolio-img
+        width: 50%
+        float: left
+
+      .portfolio-desc
+        vertical-align: middle
+        width: 50%
+        float: right
+        padding-top: 10%
+        text-align: left
+
+      &:nth-child(2n)
+        .portfolio-img
+          float: right
+        .portfolio-desc
+          float: left
+          text-align: right
+
+.about
+  +media($tablet)
+    p
+      max-width: 50em
+      margin: 0 auto
