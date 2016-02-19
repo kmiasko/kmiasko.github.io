@@ -25,7 +25,6 @@
     var links = document.querySelectorAll('a[href^="/#"]');
     var yql = 'https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20html(6)%20where%20url%3D%22http%3A%2F%2Fcodepen.io%2Fkmiasko%2Fpublic%2Ffeed%2F%22%20and%20xpath%3D%22%2F%2Fitem%22&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys';
     var codepens = document.querySelectorAll('.pen');
-
     var controller = new ScrollMagic.Controller({ duration: duration });
     var controller2 = new ScrollMagic.Controller();
 
@@ -66,7 +65,7 @@
 
     window.removeEventListener('load', load, false);
     hamburger.addEventListener('click', hamburgerClicked, false);
-    nextArrow.addEventListener('click', nextArrowClicked, false);
+    if (nextArrow) nextArrow.addEventListener('click', nextArrowClicked, false);
     backToTop.addEventListener('click', backToTopClicked, false);
 
     for (i = 0; i < linksList.length; i += 1) {
@@ -77,8 +76,10 @@
     .setClassToggle('.navbar', 'darken')
     .addTo(controller);
 
-    for (j = 0; j < links.length; j += 1) {
-      links[j].addEventListener('click', linkClick, false);
+    if (window.location.pathname === '/') {
+        for (j = 0; j < links.length; j += 1) {
+        links[j].addEventListener('click', linkClick, false);
+      }
     }
 
     $.ajax(yql, {
