@@ -22,7 +22,7 @@
     var backToTop = document.querySelector('.triangle-up');
     var i = 0;
     var j = 0;
-    var links = document.querySelectorAll('a[href^="#"]');
+    var links = document.querySelectorAll('a[href^="/#"]');
     var yql = 'https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20html(6)%20where%20url%3D%22http%3A%2F%2Fcodepen.io%2Fkmiasko%2Fpublic%2Ffeed%2F%22%20and%20xpath%3D%22%2F%2Fitem%22&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys';
     var codepens = document.querySelectorAll('.pen');
 
@@ -44,9 +44,10 @@
     };
 
     var linkClick = function (event) {
-      var id = this.getAttribute('href').slice(1);
+      var id = this.getAttribute('href').slice(2);
       if (id.length > 0) {
         event.preventDefault();
+        console.log(id);
         controller2.scrollTo(document.getElementById(id).offsetTop);
 
         if (window.history && window.history.pushState) {
