@@ -5,6 +5,27 @@
 
   window.addEventListener('load', load, false);
 
+  function debounce(func, wait, immediate) {
+    var timeout;
+    return function () {
+      var _this = this;
+      var args = arguments;
+      var later = function () {
+        timeout = null;
+        if (!immediate) {
+          func.apply(_this, args);
+        }
+      };
+
+      var callNow = immediate && !timeout;
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
+      if (callNow) {
+        func.apply(_this, args);
+      }
+    };
+  }
+
   function getDocumentHeight() {
     return Math.max(
       Math.max(document.body.scrollHeight, document.documentElement.scrollHeight),
@@ -59,11 +80,22 @@
       controller2.scrollTo(nav.offsetTop);
     };
 
+    var scrollHandler = debounce(function () {
+      var scrollBarPosition = (window.pageYOffset || document.body.scrollTop);
+      if (scrollBarPosition !== 0) {
+        nav.classList.add('not-top');
+      } else {
+        nav.classList.remove('not-top');
+      }
+    }, 250);
+
+
     controller2.scrollTo(function (newpos) {
       TweenLite.to(window, 1, { scrollTo: { y: newpos } });
     });
 
     window.removeEventListener('load', load, false);
+		window.addEventListener('scroll', scrollHandler);
     hamburger.addEventListener('click', hamburgerClicked, false);
     if (nextArrow) nextArrow.addEventListener('click', nextArrowClicked, false);
     backToTop.addEventListener('click', backToTopClicked, false);

@@ -46,7 +46,10 @@ input:focus:invalid
   outline: none
 
 .navbar
-  +background(rgba($bostonBlue, 0.9))
+  background: none
+
+  &.not-top
+    +background(rgba($bostonBlue, 0.9))
 
 .nav-links
   .nav-link
@@ -75,6 +78,7 @@ input:focus:invalid
 
 .about
   background: $porcelain
+  +background-image(linear-gradient(left bottom, rgba(255,255,255,1) 0%, rgba(236,239,240,1) 97%, rgba(235,239,240,1) 100%))
   position: relative
 
   h2
