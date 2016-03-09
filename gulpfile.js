@@ -6,7 +6,7 @@ var pprint = require('gulp-print');
 var modernizr = require('gulp-modernizr');
 var jade = require('gulp-jade');
 
-gulp.task('serve', ['sass', 'jade'], function () {
+gulp.task('serve', ['sass'], function () {
   'use strict';
   browserSync.init({
     server: './',
@@ -35,14 +35,4 @@ gulp.task('js', function () {
     .src(['./css/*.css', './js/main.js'])
     .pipe(modernizr())
     .pipe(gulp.dest('./js'));
-});
-
-gulp.task('jade', function () {
-  'use strict';
-  return gulp
-  .src(['./*.jade'])
-  .pipe(jade({
-    pretty: true,
-  }))
-  .pipe(gulp.dest('./'));
 });
