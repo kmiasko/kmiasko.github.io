@@ -9,10 +9,9 @@ var jade = require('gulp-jade');
 gulp.task('serve', ['sass'], function () {
   'use strict';
   browserSync.init({
-    server: './',
+    server: './'
   });
   gulp.watch('./**/*.sass', ['sass']);
-  gulp.watch('./*.jade', ['jade']);
   gulp.watch(['./index.html', 'js/main.js']).on('change', browserSync.reload);
 });
 
