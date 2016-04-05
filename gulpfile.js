@@ -15,6 +15,7 @@ gulp.task('serve', ['sass'], function () {
   gulp.watch(['./index.html', 'js/main.js']).on('change', browserSync.reload);
 });
 
+
 gulp.task('sass', function () {
   'use strict';
   return gulp
