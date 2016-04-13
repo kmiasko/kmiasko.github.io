@@ -8,12 +8,18 @@ body
   margin: 0
   padding: 0
 
-*[id]:before
-  display: block
-  content: " "
-  margin-top: -75px
-  height: 75px
-  visibility: hidden
+#skills,
+#about,
+#portfolio
+#last-blog-posts,
+#contact
+
+  &:before
+    display: block
+    content: " "
+    margin-top: -75px
+    height: 75px
+    visibility: hidden
 
 main
   +size(100% 100%)
