@@ -68,12 +68,15 @@ main
   +position(absolute, 50% null null 50%)
   +transform(translate(-50%, -50%))
   font-family: "Oswald", sans-serif
+  text-shadow: 0 0 1px black
 
 .skills
-  margin: 5em auto
+  padding: 6em 0 4em
+
 
 .call-to-action
-  margin: 6em auto
+  padding: 6em 0
+  margin: 2em auto
 
   a
     display: inline-block
@@ -83,7 +86,8 @@ main
 
 .contact
   +size(100% auto)
-  margin: 3em 0
+  margin: 6em 0
+  padding-bottom: 2em
   text-align: center
 
   .inputs,
@@ -115,6 +119,9 @@ main
   margin-bottom: 5em
 
 .portfolio
+  h2
+    margin: 1.5em auto 4em
+    text-align: center
 
   .portfolio-img
     position: relative
@@ -144,9 +151,6 @@ main
         opacity: 1
         transition: .3s opacity ease-in-out
 
-  h2
-    text-align: center
-    margin: 2em auto
 
   figure
     text-align: center
@@ -163,6 +167,8 @@ main
 .blog
   +outer-container
   margin: 3em auto
+  padding-top: 2em
+
   h1
     text-align: center
     margin: 2em auto
@@ -170,6 +176,9 @@ main
   ul
     list-style: none
     padding: 0 1em
+
+  li
+    padding: 0.6em 0
 
   h2
     a
