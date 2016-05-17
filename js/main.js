@@ -123,7 +123,7 @@
         var title = codepens[z].querySelector('h3 a');
         var desc = codepens[z].querySelector('p');
         var penDate = codepens[z].querySelector('.pen-date');
-        link.href = data.query.results.item[z].guid.replace(/pen/, "full");
+        link.href = data.query.results.item[z].guid.replace(/\/pen\//, "full");
         image.src = data.query.results.item[z].description.a.img.src;
         title.textContent = data.query.results.item[z].subject;
         title.href = data.query.results.item[z].guid;
