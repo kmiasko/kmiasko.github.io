@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "uglifyjs": "uglifyjs js/main.js -m -c -o js/main.min.js"
+    "uglifyjs": "mkdir -p vendor && uglifyjs js/*.js -m -c -o vendor/all.js"
   },
   "author": "",
   "license": "ISC",
