@@ -23,3 +23,5 @@ sass:
 collections:
   - portfolios
 
+gems:
+  - jekyll-sitemap
