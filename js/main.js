@@ -1,19 +1,17 @@
 /* global ScrollMagic, jQuery, TweenLite, window, document */
 
-(function (window, $) {
+(function ifee(window, $) {
   'use strict';
-
-  window.addEventListener('load', load, false);
 
   function debounce(func, wait, immediate) {
     var timeout;
-    return function () {
-      var _this = this;
+    return function anon() {
+      var that = this;
       var args = arguments;
-      var later = function () {
+      var later = function later() {
         timeout = null;
         if (!immediate) {
-          func.apply(_this, args);
+          func.apply(that, args);
         }
       };
 
@@ -21,7 +19,7 @@
       clearTimeout(timeout);
       timeout = setTimeout(later, wait);
       if (callNow) {
-        func.apply(_this, args);
+        func.apply(that, args);
       }
     };
   }
@@ -49,25 +47,24 @@
     var controller = new ScrollMagic.Controller({ duration: duration });
     var controller2 = new ScrollMagic.Controller();
 
-    var hamburgerClicked = function () {
+    var hamburgerClicked = function hc() {
       nav.classList.toggle('nav-open');
     };
 
-    var linkClicked = function () {
+    var linkClicked = function lc() {
       nav.classList.remove('nav-open');
     };
 
-    var nextArrowClicked = function (event) {
+    var nextArrowClicked = function nac(event) {
       var skill = document.getElementById('skills');
       event.preventDefault();
       controller2.scrollTo(skill.offsetTop);
     };
 
-    var linkClick = function (event) {
+    var linkClick = function lcc(event) {
       var id = this.getAttribute('href').slice(2);
       if (id.length > 0) {
         event.preventDefault();
-        console.log(id);
         controller2.scrollTo(document.getElementById(id).offsetTop);
 
         if (window.history && window.history.pushState) {
@@ -76,11 +73,11 @@
       }
     };
 
-    var backToTopClicked = function () {
+    var backToTopClicked = function bttc() {
       controller2.scrollTo(nav.offsetTop);
     };
 
-    var scrollHandler = debounce(function () {
+    var scrollHandler = debounce(function cb() {
       var scrollBarPosition = (window.pageYOffset || document.body.scrollTop);
       if (scrollBarPosition !== 0) {
         nav.classList.add('not-top');
@@ -90,12 +87,12 @@
     }, 250);
 
 
-    controller2.scrollTo(function (newpos) {
+    controller2.scrollTo(function cb2(newpos) {
       TweenLite.to(window, 1, { scrollTo: { y: newpos } });
     });
 
     window.removeEventListener('load', load, false);
-		window.addEventListener('scroll', scrollHandler);
+    window.addEventListener('scroll', scrollHandler);
     hamburger.addEventListener('click', hamburgerClicked, false);
     if (nextArrow) nextArrow.addEventListener('click', nextArrowClicked, false);
     backToTop.addEventListener('click', backToTopClicked, false);
@@ -105,25 +102,29 @@
     }
 
     new ScrollMagic.Scene({ triggerElement: '#skills' })
-    .setClassToggle('.navbar', 'darken')
-    .addTo(controller);
+      .setClassToggle('.navbar', 'darken')
+      .addTo(controller);
 
     if (window.location.pathname === '/') {
-        for (j = 0; j < links.length; j += 1) {
+      for (j = 0; j < links.length; j += 1) {
         links[j].addEventListener('click', linkClick, false);
       }
     }
 
     $.ajax(yql, {
       dataType: 'jsonp'
-    }).done(function(data) {
-      for(var z = 0; z < codepens.length; z += 1) {
-        var link = codepens[z].querySelector('.pen-image a');
-        var image = codepens[z].querySelector('.pen-image a img');
-        var title = codepens[z].querySelector('h3 a');
-        var desc = codepens[z].querySelector('p');
-        var penDate = codepens[z].querySelector('.pen-date');
-        link.href = data.query.results.item[z].guid.replace(/\/pen\//, "/full/");
+    }).done(function jcb(data) {
+      var link;
+      var image;
+      var title;
+      var penDate;
+      var z;
+      for (z = 0; z < codepens.length; z += 1) {
+        link = codepens[z].querySelector('.pen-image a');
+        image = codepens[z].querySelector('.pen-image a img');
+        title = codepens[z].querySelector('h3 a');
+        penDate = codepens[z].querySelector('.pen-date');
+        link.href = data.query.results.item[z].guid.replace(/\/pen\//, '/full/');
         image.src = data.query.results.item[z].description.a.img.src;
         title.textContent = data.query.results.item[z].subject;
         title.href = data.query.results.item[z].guid;
@@ -131,4 +132,5 @@
       }
     });
   }
-})(window, jQuery);
+  window.addEventListener('load', load, false);
+}(window, jQuery));
