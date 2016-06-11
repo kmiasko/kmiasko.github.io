@@ -3,28 +3,48 @@
 @import '_variables.sass'
 
 body
-  font-family: "Roboto", Helvetica, Arial, sans-serif
-  font-weight: 300
-  line-height: 1.5em
-  -webkit-font-smoothing: antialiased
+	-webkit-font-smoothing: antialiased
+	font-family: 'Lato', serif
+	font-weight: 400
+	line-height: 1.414
+	color: #333
+h1,
+h2
+	text-transform: uppercase
+
+img
+	vertical-align: top
+
+p
+	margin: modular-scale(1) 0
 
 h1,
 h2,
 h3,
-h4,
-h5,
-h6
-  font-family: "Oswald", Georgia, serif
-  font-weight: 400
+h4
+	margin: modular-scale(1) 0 modular-scale(-2)
+	font-weight: inherit
+	line-height: 1.414
+	font-family: "Roboto Slab", Georgia, serif
+	font-weight: 400
 
-h1,
+h1
+	margin-top: 0
+	font-size: modular-scale(4)
+
 h2
-  text-transform: uppercase
+	font-size: modular-scale(3)
 
-img
-  vertical-align: top
+h3
+	font-size: modular-scale(2)
 
-.headings,
+h4
+	font-size: modular-scale(1)
+
+small,
+.font_small
+	font-size: 0.707em
+
 .skills,
 .call-to-action,
 .photos,
@@ -32,86 +52,76 @@ img
 .last-blog-posts,
 .last-codepens,
 .footer-main
-  text-align: center
+	text-align: center
 
 .headings
-  z-index: 150
-
-  h1
-    color: $porcelain
-    font-size: modular-scale(1)
-
-  p
-    color: #CCD8DE
-    font-size: 1.2em
-    padding-top: 1em
+	z-index: 150
 
 .nav-link
-  line-height: 4em
-  verical-align: middle
-  text-align: center
-  text-transform: uppercase
-  font-size: modular-scale(-1)
-  font-weight: 700
+	line-height: 4em
+	verical-align: middle
+	text-align: center
+	text-transform: uppercase
+	font-weight: 700
 
 .skills
-  @at-root #{&}__icon
-    font-size: modular-scale(4)
-  @at-root #{&}__skill
-    font-size: modular-scale(0)
-    margin-bottom: 2em
-    padding: 0.5em
+	@at-root #{&}__icon
+		font-size: modular-scale(4)
+	@at-root #{&}__skill
+		font-size: modular-scale(1)
+		margin-bottom: 2em
+		padding: 0.5em
 
-    h3
-      margin: 0.5em
+		h3
+			margin: 0.5em
 
 .about
-  h2
-    padding: 6em 0 1em 0
-  p
-    font-size: modular-scale(0)
-    padding: 0 1em 3em 1em
+	h2
+		padding: 6em 0 1em 0
+	p
+		font-size: modular-scale(1)
+		padding: 0 1em 3em 1em
 
 
 .last-blog-posts
-  .post
-    margin-top: 1em
-    padding: 0 0.5em
-  .heading
-    margin-bottom: 6em
+	.post
+		margin-top: 1em
+		padding: 0 0.5em
+	.heading
+		margin-bottom: 6em
 
-  .post-head
-    margin-bottom: 1em
+	.post-head
+		margin-bottom: 1em
 
-  h3
-    color: $pickledBluewood
+	h3
+		color: $pickledBluewood
 
-  .date
-    font-size: modular-scale(-2)
+	.date
+		font-size: modular-scale(-2)
 
 .last-codepens
-  .codepens-header
-    margin: 7em auto
+	.codepens-header
+		margin: 7em auto
 
-  .pen
-    margin-top: 2em
+	.pen
+		margin-top: 2em
 
-    h3
-      padding-top: 0.5em
-      a
-        color: $pickledBluewood
+		h3
+			padding-top: 0.5em
+			a
+				color: $pickledBluewood
 
-  .pen-date
-    font-size: modular-scale(-2)
+	.pen-date
+		font-size: modular-scale(-1)
 
 .contact
-  form
-    max-width: 40em
-    margin: 0 auto
-  h2
-    padding: 3em 0
-    color: $athensGray
+	form
+		max-width: 40em
+		margin: 0 auto
+	h2
+		padding: 3em 0
+		color: $athensGray
 
 .footer-main
-  .copy
-    padding-bottom: 3em
+	.copy
+		padding-bottom: 3em

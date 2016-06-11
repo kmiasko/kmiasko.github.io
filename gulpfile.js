@@ -5,7 +5,6 @@ var browserSync = require('browser-sync').create();
 var pprint = require('gulp-print');
 var modernizr = require('gulp-modernizr');
 // var jade = require('gulp-jade');
-// 
 
 gulp.task('serve', ['sass'], function serveFiles() {
   'use strict';
@@ -37,3 +36,12 @@ gulp.task('js', function compileJs() {
     .pipe(modernizr())
     .pipe(gulp.dest('./js'));
 });
+
+gulp.task('sync', function syncFiles() {
+  'use strict';
+  browserSync.init({
+    server: './'
+  });
+  gulp.watch(['./index.html', 'js/main.js', 'css/style.css']).on('change', browserSync.reload);
+});
+

@@ -23,5 +23,11 @@ sass:
 collections:
   - portfolios
 
-gems:
-  - jekyll-sitemap
+#gems:
+# - jekyll-sitemap
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - Guardfile
+  - README.md
