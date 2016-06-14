@@ -30,7 +30,7 @@ main
   +outer-container
 
 .navbar
-  +size(100% 3em)
+  +size(100% modular-scale(5))
   +position(fixed, 0 null null 0)
   z-index: 100
 
@@ -41,7 +41,7 @@ main
   +size(100%)
 
   .nav-link
-    +size(100% 3em)
+    +size(100% modular-scale(3))
     display: block
 
 .nav
@@ -49,7 +49,7 @@ main
   +hide-text
   +clearfix
   +position(relative, 0 0 null null)
-  +padding(3em null null null)
+  +padding(modular-scale(4) 0 0)
 
 .nav-brand
   display: none
@@ -235,6 +235,7 @@ $opacity: 0.1
   +outer-container(em(800))
   padding: modular-scale(-2) modular-scale(0)
   margin-bottom: modular-scale(4)
+  margin-top: modular-scale(6)
 
   header
     margin: modular-scale(4) auto

@@ -60,40 +60,40 @@ small,
   z-index: 150
 
 .nav-link
-  line-height: 4em
+  line-height: modular-scale(3)
   verical-align: middle
   text-align: center
   text-transform: uppercase
-  font-weight: 700
 
 .skills
   @at-root #{&}__icon
     font-size: modular-scale(4)
   @at-root #{&}__skill
     font-size: modular-scale(1)
-    margin-bottom: 2em
-    padding: 0.5em
+    margin-bottom: modular-scale(2)
+    padding: modular-scale(-2)
+    text-align: center
 
     h3
-      margin: 0.5em
+      margin: modular-scale(-2)
 
 .about
   h2
-    padding: 6em 0 1em 0
+    padding: modular-scale(4) 0 modular-scale(1) 0
   p
     font-size: modular-scale(1)
-    padding: 0 1em 3em 1em
+    padding: 0 modular-scale(1) modular-scale(3) modular-scale(1)
 
 
 .last-blog-posts
   .post
-    margin-top: 1em
+    margin-top: modular-scale(1)
     padding: 0 modular-scale(-2)
   .heading
     margin-bottom: 6em
 
   .post-head
-    margin-bottom: 1em
+    margin-bottom: modular-scale(1)
 
   h3
     color: $pickledBluewood

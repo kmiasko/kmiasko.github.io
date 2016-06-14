@@ -10,7 +10,7 @@
 
 .navbar
   +media($mobile)
-    +size(100% 4.5em)
+    +size(100% modular-scale(4))
     .hamburger
       display: none
 
@@ -20,14 +20,16 @@
 
 .nav
   +media($mobile)
-    +size(80% 4em)
-    +padding(0 4em 0 0)
-    +margin(0 4em 0 auto)
+    +size(80% modular-scale(4))
+    +padding(0 modular-scale(4))
+    +margin(0 modular-scale(4) 0 auto)
     text-indent: 0
 
     .nav-links
       +size(auto)
       float: right
+      font-family: "Muli"
+      text-shadow: 0 0 1px rgba(0,0,0,0.3)
 
     .nav-link
       display: inline-block
@@ -35,7 +37,7 @@
       float: left
 
       li
-        +padding(0.2em 0.5em)
+        +padding(modular-scale(-3) modular-scale(-2))
 
     +media($tablet)
       +padding(0)
@@ -51,6 +53,13 @@
     @at-root #{&}__skill
       +span-columns(4)
       +omega(3n)
+      text-align: left
+
+    .skills__icon
+      text-align: center
+
+    h3
+      text-align: center
 
 .photos
   +media($tablet)
