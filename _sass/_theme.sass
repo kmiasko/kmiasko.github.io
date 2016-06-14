@@ -14,36 +14,15 @@ a:active
 
 input,
 textarea
-  color: shade($porcelain, 50%)
-  border: 1px solid $porcelain
-  font-size: modular-scale(-1)
+  color: $porcelain
+  font-size: modular-scale(1)
+  background: none
   padding: 0.8em
-  resize: none
-  box-shadow: none
   outline: none
   display: block
-  box-shadow: 0 0 5px $black-mid-opacity
-  background: $porcelain
-
-input:focus,
-textarea:focus
-  box-shadow: 0 0 5 $black-mid-opacity
-  border: 1px solid $black-mid-opacity
-
-input[type="email"]:invalid
-  box-shadow: 0 0 5px rgba(red, 0.3)
-
-input[type="submit"]
-  padding: 0.5em 2em
-  border: 1px solid $porcelain
-  background-color: $porcelain
-
-input:required:invalid,
-textarea:required:invalid,
-input:focus:invalid,
-input:focus:invalid
-  box-shadow: 0 0 5px rgba(red, 0.3)
-  outline: none
+  font-family: 'Roboto Slab', sans-serif
+  border: none
+  resize: none
 
 .navbar
   background: none
@@ -82,7 +61,7 @@ input:focus:invalid
 
 .about
   background: $porcelain
-  +background-image(linear-gradient(left bottom, rgba(255,255,255,1) 0%, rgba(236,239,240,1) 97%, rgba(235,239,240,1) 100%))
+  // +background-image(linear-gradient(45deg, rgba(255,255,255,1) 0%, rgba(236,239,240,1) 97%, rgba(235,239,240,1) 100%))
   position: relative
 
   h2

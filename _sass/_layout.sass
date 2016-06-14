@@ -72,7 +72,6 @@ main
   transform: translate(-50%, -50%)
   text-shadow: rgba(0,0,0,.01) 0 0 1px
   -webkit-font-smoothing: antialiased
-  text-rendering: optimizeLegibility
   color: #fff
 
   & > p
@@ -116,16 +115,26 @@ $opacity: 0.1
 .skills
   padding: 6em 0 0
 
+  .skills__icon,
+  h3
+    color: $bostonBlue
+    font-weight: 300
+
 
 .call-to-action
-  padding: modular-scale(5) 0
-  margin: modular-scale(2) auto
+  padding: modular-scale(6) 0
+  margin: modular-scale(7) auto
+  background: url('/img/phone_min.jpg') center center
+  background-size: cover
+  color: #fff
+  text-shadow: 0 0 1px rgba(0,0,0,0.4)
 
   a
     display: inline-block
     text-align: center
     padding: 1em 3em
     margin: 2em auto
+    text-transform: uppercase
 
 .contact
   +size(100% auto)
@@ -133,33 +142,78 @@ $opacity: 0.1
   padding-bottom: 2em
   text-align: center
 
-  .inputs,
-  .textarea
-    width: 90%
+
+  form
+    width: 70%
     margin: 0 auto
 
-  .inputs
-    input
-      width: 100%
-      margin-bottom: em(1px)
+    > div
+      position: relative
 
-  .textarea
-    padding-bottom: 4em
-    textarea
-      width: 100%
-      margin-bottom: em(5px)
 
-    input
-      float: right
+  input,
+  textarea
+    display: block
+    width: 100%
+
+  input ~ span::after,
+  textarea ~ span::after
+    content: ""
+    display: block
+    position: absolute
+    bottom: 3px
+    left: 50%
+    width: 0px
+    height: 3px
+    background: $porcelain
+    transform: translateX(-50%)
+    transition: width 0.3s ease-out
+
+  input:focus ~ span::after,
+  textarea:focus ~ span::after
+    width: 95%
+    transition: width 0.3s ease-out
+
+  input[type="submit"]
+    border-radius: .5em
+    display: inline-block
+    text-align: center
+    padding: 1em 3em
+    margin: 2em auto
+    text-transform: uppercase
+    color: $porcelain
+    border: 1px solid $porcelain
+    width: auto
+
+  input ~ label,
+  textarea ~ label
+    position: absolute
+    top: modular-scale(0)
+    left: modular-scale(0)
+    color: $porcelain
+    font-size: modular-scale(1)
+    transition: font-size 0.3s ease-in-out, translate 0.2s ease-in-out
+
+  input:focus ~ label,
+  textarea:focus ~ label
+    font-size: modular-scale(-2)
+    transform: translate(modular-scale(0), - modular-scale(-1))
+    transition: font-size 0.3s ease-in-out, translate 0.2s ease-in-out
+
+  input:valid ~ label,
+  textarea:valid ~ label
+    font-size: modular-scale(-2)
+    transform: translate(modular-scale(0), - modular-scale(-1))
+    color: $pastelGreen
 
 .photos
   background: $black-large-opacity
 
 
-
 .about
-  padding-bottom: 3em
-  margin-bottom: 5em
+  padding-bottom: modular-scale(4)
+  margin-bottom: modular-scale(5)
+  margin-top: modular-scale(6)
 
 .portfolio
   h2
@@ -206,6 +260,74 @@ $opacity: 0.1
 
     h3
       margin: 1em 0
+
+.last-codepens
+
+  .codepens-header
+    margin: modular-scale(6) 0 modular-scale(5)
+
+  .pen
+    position: relative
+    overflow: hidden
+    margin: modular-scale(1) auto
+    max-width: 384px
+
+    img
+      display: block
+
+    .pen__more
+      position: absolute
+      right: modular-scale(-2)
+      top: modular-scale(-2)
+      color: #EDF4F5
+      text-shadow: 0 0 5px rgba(0, 0, 0, 0.8)
+      font-size: modular-scale(1)
+      cursor: pointer
+      padding: 0 0.3em
+      z-index: 5
+
+    .pen__content
+      width: 0
+      transition: width 0.3s cubic-bezier(0.82, -0.39, 0.33, 1.26) 0.1s
+      height: 100%
+      background: rgba(0, 0, 0, 0.5)
+      position: absolute
+      top: 0
+      right: 0
+      z-index: 0
+      text-align: center
+      font-weight: 300
+      color: #e2e2e2
+
+    .pen__title
+      margin-top: modular-scale(2)
+
+    .pen__icons
+      text-shadow: 0 0 1px rgba(0, 0, 0, 0.6)
+      font-size: 1.414em
+      cursor: pointer
+      p
+        margin: 0.354em
+        text-transform: uppercase
+        font-size: 0.5em
+      i
+        display: inline-block
+        margin: 0.354em
+
+    .pen__title,
+    .pen__icons
+      transform: translate(300px, 0)
+      transition: transform 0.3s cubic-bezier(0.82, -0.39, 0.33, 1.26)
+
+    .pen__details
+      &.pen__details--open
+        .pen__content
+          width: 50%
+          transition: width 0.3s cubic-bezier(0.65, -0.3, 0.21, 1.65)
+        .pen__title,
+        .pen__icons
+          transform: translate(0, 0)
+          transition: transform 0.3s cubic-bezier(0.65, -0.3, 0.21, 1.65) 0.1s
 
 .blog
   +outer-container(em(800))

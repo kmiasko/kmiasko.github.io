@@ -1,4 +1,4 @@
-/* global ScrollMagic, jQuery, TweenLite, window, document */
+/* global autosize, Handlebars, ScrollMagic, jQuery, TweenLite, window, document */
 
 (function ifee(window, $) {
   'use strict';
@@ -42,10 +42,14 @@
     var i = 0;
     var j = 0;
     var links = document.querySelectorAll('a[href^="/#"]');
-    var yql = 'https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20html(6)%20where%20url%3D%22http%3A%2F%2Fcodepen.io%2Fkmiasko%2Fpublic%2Ffeed%2F%22%20and%20xpath%3D%22%2F%2Fitem%22&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys';
-    var codepens = document.querySelectorAll('.pen');
     var controller = new ScrollMagic.Controller({ duration: duration });
     var controller2 = new ScrollMagic.Controller();
+    var penTemplateSource = document.querySelector('#pen-template').innerHTML;
+    var penTarget = document.querySelector('.last-codepens');
+    var penPlaceholder = '<header class="codepens-header"><h2>Codepen</h2></header>\n';
+    var pens;
+    var template = Handlebars.compile(penTemplateSource);
+    var infoContainerToggleClass = 'pen__details--open';
 
     var hamburgerClicked = function hc() {
       nav.classList.toggle('nav-open');
@@ -86,6 +90,7 @@
       }
     }, 250);
 
+    autosize(document.querySelectorAll('textarea'));
 
     controller2.scrollTo(function cb2(newpos) {
       TweenLite.to(window, 1, { scrollTo: { y: newpos } });
@@ -111,26 +116,43 @@
       }
     }
 
-    $.ajax(yql, {
-      dataType: 'jsonp'
-    }).done(function jcb(data) {
-      var link;
-      var image;
-      var title;
-      var penDate;
-      var z;
-      for (z = 0; z < codepens.length; z += 1) {
-        link = codepens[z].querySelector('.pen-image a');
-        image = codepens[z].querySelector('.pen-image a img');
-        title = codepens[z].querySelector('h3 a');
-        penDate = codepens[z].querySelector('.pen-date');
-        link.href = data.query.results.item[z].guid.replace(/\/pen\//, '/full/');
-        image.src = data.query.results.item[z].description.a.img.src;
-        title.textContent = data.query.results.item[z].subject;
-        title.href = data.query.results.item[z].guid;
-        penDate.textContent = data.query.results.item[z].date.split('T')[0];
+    function infoState(e) {
+      var el = e.currentTarget.parentNode.querySelector('.pen__details');
+      el.classList.toggle(infoContainerToggleClass);
+    }
+
+    function removeState(e) {
+      if (e.target.classList.contains(infoContainerToggleClass)) {
+        e.target.classList.remove(infoContainerToggleClass);
       }
-    });
+    }
+
+    function addEventHandlers(elemList) {
+      var el;
+      for (i = 0; i < elemList.length; i++) {
+        el = elemList[i].querySelector('.pen__more');
+        el.addEventListener('click', infoState);
+        elemList[i].querySelector('.pen__details').addEventListener('mouseleave', removeState);
+      }
+    }
+
+    $.getJSON('http://cpv2api.com/pens/public/kmiasko')
+      .done(function apiResp(resp) {
+        if (resp.success) {
+          for (i = 0; i < resp.data.length; i++) {
+            penPlaceholder += template({
+              title: resp.data[i].title,
+              link: resp.data[i].link,
+              image: resp.data[i].images.small
+            }) + '\n';
+          }
+          penTarget.innerHTML = penPlaceholder;
+        }
+      }).always(function jsxComp() {
+        pens = penTarget.querySelectorAll('.pen');
+        addEventHandlers(pens);
+      });
   }
+
   window.addEventListener('load', load, false);
 }(window, jQuery));

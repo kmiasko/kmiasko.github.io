@@ -19,6 +19,10 @@ sass:
   sass_dir: _sass
   style: compressed
   sourcemap: true
+  load_paths:
+    - _sass
+    - node_modules/bourbon/app/assets/stylesheets
+    - node_modules/bourbon-neat/app/assets/stylesheets
 
 collections:
   - portfolios

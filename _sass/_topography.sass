@@ -7,6 +7,8 @@ body
   font-weight: 400
   line-height: 1.414
   color: #333
+  text-rendering: optimizeLegibility
+  font-feature-settings: "liga" 1, "kern", 1
   -webkit-font-smoothing: antialiased
   -moz-osx-font-smoothing: grayscale
 
@@ -79,7 +81,7 @@ small,
 
 .about
   h2
-    padding: modular-scale(4) 0 modular-scale(1) 0
+    padding: modular-scale(6) 0 modular-scale(1) 0
   p
     font-size: modular-scale(1)
     padding: 0 modular-scale(1) modular-scale(3) modular-scale(1)
@@ -90,7 +92,7 @@ small,
     margin-top: modular-scale(1)
     padding: 0 modular-scale(-2)
   .heading
-    margin-bottom: 6em
+    margin-bottom: modular-scale(5)
 
   .post-head
     margin-bottom: modular-scale(1)
@@ -104,21 +106,6 @@ small,
   .post-content
     font-size: modular-scale(1)
     text-align: left
-
-.last-codepens
-  .codepens-header
-    margin: 7em auto
-
-  .pen
-    margin-top: modular-scale(2)
-
-    h3
-      padding-top: modular-scale(-2)
-      a
-        color: $pickledBluewood
-
-  .pen-date
-    font-size: modular-scale(0)
 
 .contact
   form
