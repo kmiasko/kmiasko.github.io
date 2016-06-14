@@ -5,10 +5,9 @@
   "main": "index.js",
   "scripts": {
     "uglifyjs": "mkdir -p vendor && uglifyjs js/*.js -m -c -o vendor/all.js",
-    "uglifycss": "mkdir -p vendor && uglifycss _site/css/main.css",
-    "build": "npm r uglifyjs ; npm r uglifycss"
+    "build": "npm run uglifyjs"
   },
-  "author": "",
+  "author": "Krzysztof Miąsko",
   "license": "ISC",
   "devDependencies": {
     "babel-eslint": "^4.1.6",
