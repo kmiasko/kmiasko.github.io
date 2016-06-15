@@ -18,6 +18,7 @@ markdown: kramdown
 sass:
   sass_dir: _sass
   load_paths:
+    - ./
     - _sass
     - node_modules/bourbon/app/assets/stylesheets
     - node_modules/bourbon-neat/app/assets/stylesheets
@@ -25,8 +26,8 @@ sass:
 collections:
   - portfolios
 
-# gems:
-#   - jekyll-sitemap
+gems:
+  - jekyll-sitemap
 
 exclude:
   - Gemfile
