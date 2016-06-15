@@ -69,7 +69,7 @@ title: "Krzysztof Miąsko"
     {% for portfolio in site.portfolios reversed %}
     <div class="portfolio-item">
       <div class="portfolio-img">
-        <figure><img src="{{ portfolio.image }}">
+        <figure><img src="{{ portfolio.image }}" alt="old home">
           <div class="p-item-hover"><a href="{{ portfolio.link }}" target="_blank"><i class="fa fa-2x fa-anchor"></i></a></div>
         </figure>
       </div>
@@ -108,7 +108,7 @@ title: "Krzysztof Miąsko"
           <input type="text" name="name" id="name_input" required><label for="name_input">Imię i nazwisko</label><span></span>
         </div>
         <div>
-          <input type="email" name="_replyto" id="email_input" required><label for="email_inpit">E-mail</label><span></span>
+          <input type="email" name="_replyto" id="email_input" required><label for="email_input">E-mail</label><span></span>
         </div>
         <input type="hidden" name="_next" value="//kmiasko.github.io/">
         <input type="hidden" name="_subject" value="Nowa wiadomość ze strony kmiasko.github.io">
