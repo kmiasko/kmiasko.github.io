@@ -17,8 +17,6 @@ url: "http://kmiasko.github.io" # the base hostname & protocol for your site
 markdown: kramdown
 sass:
   sass_dir: _sass
-  style: compressed
-  sourcemap: true
   load_paths:
     - _sass
     - node_modules/bourbon/app/assets/stylesheets
