@@ -5,4 +5,4 @@ gem "guard-jekyll-plus"
 gem 'guard-livereload', '~> 2.5'
 gem "rack-livereload"
 gem "thin"
-
+gem "jekyll-sitemap"
