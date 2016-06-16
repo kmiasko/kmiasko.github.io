@@ -45,25 +45,27 @@
   font-size: 0.6em
   +margin(em(10))
   color: $black-large-opacity
+  display: inline-block
+  cursor: pointer
 
   &:hover
     color: $porcelain
-    +transition(color .5s linear)
+    +transition(color .3s linear)
 
   &::after
     content: ""
     display: block
     +size(2.5em 2.5em)
-    +position(absolute, em(-15) null null em(1))
+    +position(absolute, em(-4) null null em(1))
     border: 1px solid $black-large-opacity
     +transform(rotate(45deg))
     border-radius: 3px
     z-index: -1
-    +transition(background .5s linear, color .5s linear)
+    +transition(background .3s linear, color .5s linear)
 
   &:hover::after
     background: $black-large-opacity
-    +transition(background .5s linear, color .5s linear)
+    +transition(background .3s linear, color .5s linear)
 
 .photos
   .photo

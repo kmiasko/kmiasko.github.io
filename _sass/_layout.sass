@@ -323,47 +323,74 @@ $opacity: 0.1
           transition: transform 0.3s cubic-bezier(0.65, -0.3, 0.21, 1.65) 0.1s
 
 .blog
-  +outer-container(em(800))
-  margin: 3em auto
-  padding-top: 2em
 
-  h1
-    text-align: center
-    margin: 2em auto
+  header
+    width: 100%
+    background: url('/img/blog-min.jpg') center center
+    background-size: cover
+    display: table
+    padding: modular-scale(8) 0
+
+    h1
+      display: table-cell
+      vertical-align: middle
+      text-align: center
+      color: $porcelain
+      text-shadow: 0 0 1px rgba(0,0,0,0.5)
+      font-size: modular-scale(2)
+      max-width: 90%
+      margin: 0 auto
 
   ul
     list-style: none
-    padding: 0 1em
-
-  li
-    padding: 0.6em 0
 
   h2
+    font-size: modular-scale(2)
     a
       color: $pickledBluewood
+
+  .posts
+    +outer-container(em(800))
+    margin-top: modular-scale(6)
+    padding: 0 modular-scale(1)
+
 
   .post-meta
     font-size: modular-scale(0)
 
 
 .blog-post
-  +outer-container(em(800))
-  padding: modular-scale(-2) modular-scale(0)
-  margin-bottom: modular-scale(4)
-  margin-top: modular-scale(6)
 
-  header
-    margin: modular-scale(4) auto
+  .post-header
+    width: 100%
+    padding: modular-scale(8) 0
+    display: table
+    background: url('/img/code-min.jpg') center center
+    background-size: cover
+    color: $porcelain
+
+  .header-content
+    display: table-cell
+    vertical-align: middle
+    text-shadow: 0 0 1px rgba(0,0,0,0.5)
 
     .post-title
       text-align: center
+      font-size: modular-scale(3)
+      max-width: 90%
+      margin: 0 auto
 
     .post-meta
       text-align: center
       font-size: modular-scale(0)
 
-  .post-content > p
-    font-size: modular-scale(1)
+  .post-main
+    margin-top: modular-scale(6)
+    +outer-container(em(800))
+    padding: 0 modular-scale(1)
+
+    .post-content > p
+      font-size: modular-scale(1)
 
 figure.highlight
   font-size: modular-scale(0)

@@ -24,7 +24,7 @@
     .nav-links
       +size(auto)
       float: right
-      font-family: "Roboto Slab"
+      font-family: "Raleway"
       text-shadow: 0 0 1px rgba(0,0,0,0.3)
 
     .nav-link
@@ -113,10 +113,6 @@
       max-width: 50em
       margin: 0 auto
 
-.blog-post
-  +media($tablet)
-    padding: 0 2em
-
 figure.highlight
   +media($tablet)
     margin: 3.5em auto
@@ -126,3 +122,16 @@ figure.highlight
 
     pre
       padding: 1em
+
+.blog-post
+  +media($tablet)
+    .header-content h1
+      font-size: modular-scale(4)
+
+.blog
+  +media($tablet)
+    header h1
+      font-size: modular-scale(5)
+
+    h2
+      font-size: modular-scale(3)
