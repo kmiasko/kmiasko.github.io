@@ -4,128 +4,128 @@
  */
 
 @font-face {
-    font-family: 'FontAwesome';
-    src: url('../fonts/fontawesome-webfont.eot?v=4.5.0');
-    src: url('../fonts/fontawesome-webfont.eot?#iefix&v=4.5.0') format('embedded-opentype'), url('../fonts/fontawesome-webfont.woff2?v=4.5.0') format('woff2'), url('../fonts/fontawesome-webfont.woff?v=4.5.0') format('woff'), url('../fonts/fontawesome-webfont.ttf?v=4.5.0') format('truetype'), url('../fonts/fontawesome-webfont.svg?v=4.5.0#fontawesomeregular') format('svg');
-    font-weight: normal;
-    font-style: normal
+  font-family: 'FontAwesome';
+  src: url('../fonts/fontawesome-webfont.eot?v=4.5.0');
+  src: url('../fonts/fontawesome-webfont.eot?#iefix&v=4.5.0') format('embedded-opentype'), url('../fonts/fontawesome-webfont.woff2?v=4.5.0') format('woff2'), url('../fonts/fontawesome-webfont.woff?v=4.5.0') format('woff'), url('../fonts/fontawesome-webfont.ttf?v=4.5.0') format('truetype'), url('../fonts/fontawesome-webfont.svg?v=4.5.0#fontawesomeregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
 }
 
 .fa {
-    display: inline-block;
-    font: normal normal normal 14px/1 FontAwesome;
-    font-size: inherit;
-    text-rendering: auto;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .fa-lg {
-    font-size: 1.33333333em;
-    line-height: .75em;
-    vertical-align: -15%
+  font-size: 1.33333333em;
+  line-height: .75em;
+  vertical-align: -15%;
 }
 
 .fa-2x {
-    font-size: 2em
+  font-size: 2em;
 }
 
 
 .fa-fw {
-    width: 1.28571429em;
-    text-align: center
+  width: 1.28571429em;
+  text-align: center;
 }
 
 .fa-ul {
-    padding-left: 0;
-    margin-left: 2.14285714em;
-    list-style-type: none
+  padding-left: 0;
+  margin-left: 2.14285714em;
+  list-style-type: none;
 }
 
 .fa-ul>li {
-    position: relative
+  position: relative;
 }
 
 .fa-li {
-    position: absolute;
-    left: -2.14285714em;
-    width: 2.14285714em;
-    top: .14285714em;
-    text-align: center
+  position: absolute;
+  left: -2.14285714em;
+  width: 2.14285714em;
+  top: .14285714em;
+  text-align: center;
 }
 
 .fa-li.fa-lg {
-    left: -1.85714286em
+  left: -1.85714286em;
 }
 
 .fa-border {
-    padding: .2em .25em .15em;
-    border: solid .08em #eee;
-    border-radius: .1em
+  padding: .2em .25em .15em;
+  border: solid .08em #eee;
+  border-radius: .1em;
 }
 
 .fa-pull-left {
-    float: left
+  float: left;
 }
 
 .fa-pull-right {
-    float: right
+  float: right;
 }
 
 .fa.fa-pull-left {
-    margin-right: .3em
+  margin-right: .3em;
 }
 
 .fa.fa-pull-right {
-    margin-left: .3em
+  margin-left: .3em;
 }
 
 .pull-right {
-    float: right
+  float: right;
 }
 
 .pull-left {
-    float: left
+  float: left;
 }
 
 .fa.pull-left {
-    margin-right: .3em
+  margin-right: .3em;
 }
 
 .fa.pull-right {
-    margin-left: .3em
+  margin-left: .3em;
 }
 
 .fa-spin {
-    -webkit-animation: fa-spin 2s infinite linear;
-    animation: fa-spin 2s infinite linear
+  -webkit-animation: fa-spin 2s infinite linear;
+  animation: fa-spin 2s infinite linear;
 }
 
 .fa-pulse {
-    -webkit-animation: fa-spin 1s infinite steps(8);
-    animation: fa-spin 1s infinite steps(8)
+  -webkit-animation: fa-spin 1s infinite steps(8);
+  animation: fa-spin 1s infinite steps(8);
 }
 
 @-webkit-keyframes fa-spin {
-    0% {
-        -webkit-transform: rotate(0deg);
-        transform: rotate(0deg)
-    }
-    100% {
-        -webkit-transform: rotate(359deg);
-        transform: rotate(359deg)
-    }
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
 }
 
 @keyframes fa-spin {
-    0% {
-        -webkit-transform: rotate(0deg);
-        transform: rotate(0deg)
-    }
-    100% {
-        -webkit-transform: rotate(359deg);
-        transform: rotate(359deg)
-    }
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
 }
 
 :root .fa-rotate-90,
@@ -133,52 +133,55 @@
 :root .fa-rotate-270,
 :root .fa-flip-horizontal,
 :root .fa-flip-vertical {
-    filter: none
+  filter: none;
 }
 
 .fa-stack {
-    position: relative;
-    display: inline-block;
-    width: 2em;
-    height: 2em;
-    line-height: 2em;
-    vertical-align: middle
+  position: relative;
+  display: inline-block;
+  width: 2em;
+  height: 2em;
+  line-height: 2em;
+  vertical-align: middle;
 }
 
 .fa-stack-1x,
 .fa-stack-2x {
-    position: absolute;
-    left: 0;
-    width: 100%;
-    text-align: center
+  position: absolute;
+  left: 0;
+  width: 100%;
+  text-align: center;
 }
 
 .fa-stack-1x {
-    line-height: inherit
+  line-height: inherit;
 }
 
 .fa-stack-2x {
-    font-size: 2em
+  font-size: 2em;
 }
 
 .fa-inverse {
-    color: #fff
+  color: #fff;
 }
 
 .fa-facebook-f:before,
 .fa-facebook:before {
-  content: "\f09a"
+  content: "\f09a";
 }
 .fa-twitter:before {
-  content: "\f099"
+  content: "\f099";
 }
 .fa-codepen:before {
-  content: "\f1cb"
+  content: "\f1cb";
 }
 .fa-github:before {
-  content: "\f09b"
+  content: "\f09b";
 }
 .fa-anchor:before {
-  content: "\f13d"
+  content: "\f13d";
 }
 
+.fa-ellipsis-v:before {
+  content: "\f142";
+}
