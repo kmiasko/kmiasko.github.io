@@ -35,3 +35,9 @@ exclude:
   - Gemfile.lock
   - Guardfile
   - README.md
+  - node_modules
+  - options.json
+  - packags.json
+  - .sass-cache
+  - gulpfile.js
+
