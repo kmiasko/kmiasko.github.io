@@ -249,11 +249,23 @@ $opacity: 0.1
   .portfolio-desc
     text-align: center
     max-width: 35em
-    margin: 0 auto 3em auto
-    padding: 0 0.5em
+    margin: modular-scale(4) auto
+    padding: 0 modular-scale(2)
 
     h3
-      margin: 1em 0
+      margin: modular-scale(1) 0
+      color: $bostonBlue
+      font-weight: 300
+
+    .meta
+      font-size: modular-scale(0)
+      color: #666
+
+      a
+        display: block
+        color: $bostonBlue
+        text-decoration: underline
+        margin: modular-scale(1) 0
 
 .last-codepens
 

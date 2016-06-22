@@ -6,12 +6,12 @@
   function debounce(func, wait, immediate) {
     var timeout;
     return function anon() {
-      var that = this;
+      var _that = this;
       var args = arguments;
       var later = function later() {
         timeout = null;
         if (!immediate) {
-          func.apply(that, args);
+          func.apply(_that, args);
         }
       };
 
@@ -19,7 +19,7 @@
       clearTimeout(timeout);
       timeout = setTimeout(later, wait);
       if (callNow) {
-        func.apply(that, args);
+        func.apply(_that, args);
       }
     };
   }

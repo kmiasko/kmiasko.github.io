@@ -85,7 +85,6 @@
 .portfolio
   +media($tablet)
     .portfolio-item
-      border: 1px solid #ddd
       position: relative
       +clearfix
 
@@ -94,18 +93,23 @@
         float: left
 
       .portfolio-desc
-        vertical-align: middle
         width: 50%
         float: right
-        padding-top: 10%
         text-align: left
+        position: absolute
+        transform: translateY(-50%)
+        top: 50%
+        margin: 0
+        right: 0
 
       &:nth-child(2n)
         .portfolio-img
           float: right
+
         .portfolio-desc
           float: left
           text-align: right
+          left: 0
 
 .about
   +media($tablet)

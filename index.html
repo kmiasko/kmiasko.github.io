@@ -79,6 +79,10 @@ title: "Krzysztof Miąsko"
       <div class="portfolio-desc">
         <h3>{{ portfolio.title }}</h3>
         <p>{{ portfolio.description }}</p>
+        <p class="meta">
+          <span>Narzędzia: {{ portfolio.tools }}</span>
+          <a href="{{ portfolio.link }}">LINK</a>
+        </p>
       </div>
     </div>
     {% endfor %}
