@@ -117,6 +117,7 @@ $opacity: 0.1
   margin: modular-scale(7) auto
   background: url('/img/phone_min.jpg') center center
   background-size: cover
+  background-attachment: fixed
   color: #fff
   text-shadow: 0 0 1px rgba(0,0,0,0.4)
 
@@ -358,6 +359,7 @@ $opacity: 0.1
 
   h2
     font-size: modular-scale(2)
+    margin-bottom: 0
     a
       color: $pickledBluewood
 
@@ -369,6 +371,7 @@ $opacity: 0.1
 
   .post-meta
     font-size: modular-scale(0)
+    display: block
 
 
 .blog-post
@@ -403,6 +406,13 @@ $opacity: 0.1
 
     .post-content > p
       font-size: modular-scale(1)
+      font-weight: 300
+
+@media all and (min-width: 800px)
+
+  .blog-post .post-main .post-content > p
+    font-size: 1.2em
+    line-height: 1.45
 
 figure.highlight
   font-size: modular-scale(0)
