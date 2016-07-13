@@ -43,13 +43,9 @@
     var linksList = nav.querySelectorAll('.nav-link');
     var nextArrow = document.querySelector('.next-arrow');
     var links = document.querySelectorAll('a[href^="/#"]');
-    var penTemplateSource = document.querySelector('#pen-template').innerHTML;
-    var penTarget = document.querySelector('.last-codepens');
-    var penPlaceholder = '<header class="codepens-header"><h2>Codepen</h2></header>\n';
-    var infoContainerToggleClass = 'pen__details--open';
     var controller = new ScrollMagic.Controller();
+    var penHeaderPlaceholder = '<header class="codepens-header"><h2>Codepen</h2></header>\n';
     var duration = getDocumentHeight() + window.innerHeight;
-    var template = Handlebars.compile(penTemplateSource);
     var pens;
     var i = 0;
     var j = 0;
@@ -89,26 +85,6 @@
       }
     }, 250);
 
-    var infoState = function infoState(e) {
-      var el = e.currentTarget.parentNode.querySelector('.pen__details');
-      el.classList.toggle(infoContainerToggleClass);
-    };
-
-    var removeState = function removeState(e) {
-      if (e.target.classList.contains(infoContainerToggleClass)) {
-        e.target.classList.remove(infoContainerToggleClass);
-      }
-    };
-
-    var addEventHandlers = function addEventHandlers(elemList) {
-      var el;
-      for (i = 0; i < elemList.length; i++) {
-        el = elemList[i].querySelector('.pen__more');
-        el.addEventListener('click', infoState);
-        elemList[i].querySelector('.pen__details').addEventListener('mouseleave', removeState);
-      }
-    };
-
     window.removeEventListener('DOMContentLoaded', load, false);
     window.addEventListener('scroll', scrollHandler);
     hamburger.addEventListener('click', hamburgerClicked, false);
@@ -135,21 +111,18 @@
 
     // load last 6 pens from my codepen using unofficial cpv2api (CORS)
     // and add them to last-code-pens section
+    $('.last-codepens').html(penHeaderPlaceholder);
+    pens = penList();
     $.getJSON('http://cpv2api.com/pens/public/kmiasko')
       .done(function apiResp(resp) {
-        if (resp.success) {
-          for (i = 0; i < resp.data.length; i++) {
-            penPlaceholder += template({
-              title: resp.data[i].title,
-              link: resp.data[i].link,
-              image: resp.data[i].images.small
-            }) + '\n';
-          }
-          penTarget.innerHTML = penPlaceholder;
+        for (var i = 0; i < resp.data.length; i++) {
+          pens.add(penElement({
+            title: resp.data[i].title,
+            link: resp.data[i].link,
+            image: resp.data[i].images.small
+          }));
         }
-      }).always(function jsxComp() {
-        pens = penTarget.querySelectorAll('.pen');
-        addEventHandlers(pens);
+        pens.render(document.querySelector('.last-codepens'));
       });
   }
 
