@@ -44,7 +44,6 @@
     var nextArrow = document.querySelector('.next-arrow');
     var links = document.querySelectorAll('a[href^="/#"]');
     var controller = new ScrollMagic.Controller();
-    var penHeaderPlaceholder = '<header class="codepens-header"><h2>Codepen</h2></header>\n';
     var duration = getDocumentHeight() + window.innerHeight;
     var pens;
     var i = 0;
@@ -111,7 +110,6 @@
 
     // load last 6 pens from my codepen using unofficial cpv2api (CORS)
     // and add them to last-code-pens section
-    $('.last-codepens').html(penHeaderPlaceholder);
     pens = penList();
     $.getJSON('http://cpv2api.com/pens/public/kmiasko')
       .done(function apiResp(resp) {
