@@ -10,9 +10,9 @@ var penElement = (function(_penDetails) {
       '<p class="pen__title">{{title}}</p>' +
       '<div class="pen__icons">' +
         '<p>Udostępnij</p>' +
-        '<i class="fa fa-facebook"></i>' +
-        '<i class="fa fa-twitter"></i>' +
-        '<i class="fa fa-google-plus"></i>' +
+        '<a href="https://www.facebook.com/sharer/sharer.php?u={{link}}"><i class="fa fa-facebook"></i></a>' +
+        '<a href="https://twitter.com/home?status=Pen by Krzysztof Miąsko {{link}}"><i class="fa fa-twitter"></i></a>' +
+        '<a href="https://plus.google.com/share?url={{link}}"><i class="fa fa-google-plus"></i></a>' +
       '</div>' +
     '</div>' +
   '</div>' +
