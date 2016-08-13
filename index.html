@@ -83,7 +83,12 @@ title: "Krzysztof Miąsko"
         <p>{{ portfolio.description }}</p>
         <p class="meta">
           <span>Narzędzia: {{ portfolio.tools }}</span>
-          <a href="{{ portfolio.link }}">LINK</a>
+          <div class="portfolio-links">
+            {% if portfolio.github %}
+              <a href="{{ portfolio.github }}"><i class="fa fa-github"></i></a>
+            {% endif %}
+            <a href="{{ portfolio.link }}"><i class="fa fa-anchor"></i></a>
+          </div>
         </p>
       </div>
     </div>
