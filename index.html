@@ -71,7 +71,7 @@ title: "Krzysztof Miąsko"
   <section id="portfolio" class="portfolio">
     <h2>Realizacje</h2>
     {% assign portfolio_items = site.portfolios | sort: 'date' | reverse %}
-    {% for portfolio in portfolio_items limit:3 %}
+    {% for portfolio in portfolio_items limit:5 %}
     <div class="portfolio-item">
       <div class="portfolio-img">
         <figure><img src="{{ portfolio.image }}" alt="old home">
