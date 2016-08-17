@@ -74,9 +74,16 @@ title: "Krzysztof Miąsko"
     {% for portfolio in portfolio_items limit:5 %}
     <div class="portfolio-item">
       <div class="portfolio-img">
+        {% if portfolio.image %}
         <figure><img src="{{ portfolio.image }}" alt="old home">
           <div class="p-item-hover"><a href="{{ portfolio.link }}" target="_blank"><i class="fa fa-2x fa-anchor"></i></a></div>
         </figure>
+        {% elsif portfolio.video %}
+          <video controls poster="{{ portfolio.placeholder }}">
+            {% assign url = v | split: '.' %}
+              <source src="{{ portfolio.video }}" type={{ url[1] }}></source>
+          </video>
+        {% endif %}
       </div>
       <div class="portfolio-desc">
         <h3>{{ portfolio.title }}</h3>
