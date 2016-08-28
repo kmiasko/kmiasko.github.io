@@ -1,6 +1,6 @@
 ---
 title: "Handyman BASEL"
-link: "http://kmiasko.ct8.pl/handyman"
+link: "http://handymanbasel.ch"
 image: "img/handyman.jpg"
 date: 2016-08-14 10:46:13 +0100
 github: "https://github.com/kmiasko/handyman"
