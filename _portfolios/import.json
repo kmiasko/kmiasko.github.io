@@ -1,0 +1,47 @@
+{
+  {
+    "title": "Escape Velocity",
+    "url": "http://kmiasko.ct8.pl/escape_velocity",
+    "image": "http://kmiasko.github.io/img/escape.jpg",
+    "github": "https://github.com/kmiasko/escape_velocity",
+    "date": 2016-04-18 10:46:13 +0100,
+    "description": "Próba odtworzenia darmowego template Escape Velocity ze strony html5up.com",
+    "tools": "HTML5 CSS3 JS Sass"
+  },
+  {
+    "title": "Handyman BASEL",
+    "url": "http://handymanbasel.ch",
+    "image": "http://kmiasko.github.io/img/handyman.jpg",
+    "date": 2016-08-14 10:46:13 +0100,
+    "github": "https://github.com/kmiasko/handyman",
+    "description": "Landing page stolarza z Bazylei.",
+    "tools": "HTML5 CSS3 JS Sass ScrollMagic Masonry"
+  },
+  {
+    "title": "codeFormatter",
+    "url": "http://github.com/kmiasko/codeFormatter",
+    "date": 2016-08-17 10:46:13 +0100,
+    "github": "https://github.com/kmiasko/codeFormatter",
+    "description": "Skrypt Tampermonkey formatujący kod w komentarzu wykop.pl",
+    "tools": "Tampermonkey higlight.js",
+    "image": "http://kmiasko.github.io/img/codeFormatter.jpg"
+  },
+  {
+    "title": "CDAPlayer",
+    "url": "https://www.npmjs.com/package/cdaplayer",
+    "github": "http://github.com/kmiasko/cdaplayer",
+    "image": "http://kmiasko.github.io/img/cdaplayer.jpg",
+    "date": 2016-08-15 10:46:13 +0100,
+    "description": "Prosta aplikacja CLI (nodejs) do odtwarzania filmów cda",
+    "tools": "NodeJs saveEval commander"
+  },
+  {
+    "title": "Favorite Movies",
+    "url": "http://kmiasko.ct8.pl/react/",
+    "github": "https://github.com/kmiasko/gallery-app",
+    "image": "http://kmiasko.github.io/img/favoritemovies.jpg",
+    "date": 2017-01-30 10:46:13 +0100,
+    "description": "Aplikacja umożliwiająca dodawanie filmów z youtuba i vimeo(odtwarzanie, sortowanie, filtrowanie, ulubione)",
+    "tools": "HTML5 CSS3 React v15 Redux Webpack Material-ui react-paginate"
+  }
+}
