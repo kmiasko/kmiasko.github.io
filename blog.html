@@ -9,7 +9,8 @@ title: "Krzysztof Miąsko - Blog"
   </header>
   <div class="posts">
     <ul class="post-list">
-      {% for post in ((site.posts | sort: 'date') | reversed) %}
+      {% assign posts = (site.posts | sort: 'date' | reversed) %}
+      {% for post in posts %}
       <li>
         <h2>
           <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>

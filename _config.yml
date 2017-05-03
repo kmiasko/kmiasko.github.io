@@ -12,6 +12,7 @@ description: > # this means to ignore newlines until "baseurl:"
   Krzysztof Miąsko - Frontend developer. Nowoczesne strony WWW, aplikacje internetowe.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://kmiasko.github.io" # the base hostname & protocol for your site
+exclude: [vendor, nclude-dependencies]
 
 # Build settings
 markdown: kramdown
@@ -29,15 +30,4 @@ collections:
 
 gems:
   - jekyll-sitemap
-
-exclude:
-  - Gemfile
-  - Gemfile.lock
-  - Guardfile
-  - README.md
-  - node_modules
-  - options.json
-  - packags.json
-  - .sass-cache
-  - gulpfile.js
 
