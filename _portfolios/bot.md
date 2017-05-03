@@ -1,6 +1,6 @@
 ---
 title: "Messenger Bot"
-link: "https://github.com/kmiasko/kmiaskojs"
+link: "https://fb.me/kmiaskojs"
 github: "https://github.com/kmiasko/kmiaskojs"
 placeholder: "img/bot.jpg"
 video: "img/bot.mp4"
