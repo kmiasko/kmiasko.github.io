@@ -21,8 +21,8 @@ var penElement = (function(_penDetails) {
   var template,
     container,
     penDetails = {},
-    $openButton,
-    $detailsPopup;
+    openButton,
+    detailsPopup;
 
   function _init() {
     template = Handlebars.compile(template_html);
@@ -31,23 +31,23 @@ var penElement = (function(_penDetails) {
   }
 
   function _create() {
-    $.extend(penDetails, _penDetails);
+    Object.assign(penDetails, _penDetails);
     container.innerHTML = template(penDetails);
-    $openButton = $(container).find('.pen__more');
-    $detailsPopup = $(container).find('.pen__details');
+    openButton = container.querySelector('.pen__more');
+    detailsPopup = container.querySelector('.pen__details');
   }
 
   function _bindEvents() {
-    $openButton.on('click', _openContainer);
-    $detailsPopup.on('mouseleave', _closeContainer);
+    openButton.addEventListener('click', _openContainer);
+    detailsPopup.addEventListener('mouseleave', _closeContainer);
   }
 
   function _closeContainer(event) {
-    $detailsPopup.removeClass('pen__details--open');
+    detailsPopup.classList.remove('pen__details--open');
   }
 
   function _openContainer(event) {
-    $detailsPopup.toggleClass('pen__details--open');
+    detailsPopup.classList.toggle('pen__details--open');
   }
 
   _init();

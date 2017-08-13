@@ -1,10 +1,39 @@
-/* global autosize, Handlebars, ScrollMagic, jQuery, TweenLite, window, document */
+/* global autosize, Handlebars, fetch, window, document */
 
-(function ifee(window, $) {
+(function ifee(window, fetch) {
   'use strict';
 
-  // function used for handling scroll event, checks if event ocurred
-  // every milliseconds, prevents event flood
+  function inputFocus(e) {
+    e.stopPropagation();
+    var label = e.target.parentNode.querySelector('label');
+    var coords = label.getBoundingClientRect();
+    var offset = coords.width / 4;
+    if (!label.dataset.focused || label.dataset.focused === 'false') {
+      label.style = 'transform: translate(-' + offset + 'px' + ', -1em) scale(0.5); transition: transform .3s';
+      label.dataset.focused = true;
+    }
+  }
+
+  function inputBlur(e) {
+    e.stopPropagation();
+    var label = e.target.parentNode.querySelector('label');
+    var input = e.target.parentNode.querySelector('input');
+    var textarea = e.target.parentNode.querySelector('textarea');
+    var container = input || textarea;
+
+    if (label.dataset.focused && label.dataset.focused === 'true') {
+      if (!container.value) {
+        label.style = 'transform: translate(0, 0) scale(1); transition: transform .3s';
+        label.dataset.focused = false;
+      }
+    }
+  }
+
+  function contactInputAnimation() {
+    var container = document.getElementById('contact');
+    container.addEventListener('focus', inputFocus, true);
+    container.addEventListener('blur', inputBlur, true);
+  }
 
   function debounce(func, wait, immediate) {
     var timeout;
@@ -27,14 +56,6 @@
     };
   }
 
-  function getDocumentHeight() {
-    return Math.max(
-      Math.max(document.body.scrollHeight, document.documentElement.scrollHeight),
-      Math.max(document.body.offsetHeight, document.documentElement.offsetHeight),
-      Math.max(document.body.clientHeight, document.documentElement.clientHeight)
-    );
-  }
-
   // called on document DOMContentLoaded event
 
   function load() {
@@ -43,11 +64,10 @@
     var linksList = nav.querySelectorAll('.nav-link');
     var nextArrow = document.querySelector('.next-arrow');
     var links = document.querySelectorAll('a[href^="/#"]');
-    var controller = new ScrollMagic.Controller();
-    var duration = getDocumentHeight() + window.innerHeight;
     var pens;
     var i = 0;
     var j = 0;
+    // var scrolling = false;
 
     var hamburgerClicked = function hc() {
       nav.classList.toggle('nav-open');
@@ -59,16 +79,15 @@
 
     var nextArrowClicked = function nac(event) {
       var skill = document.getElementById('skills');
-      event.preventDefault();
-      controller.scrollTo(skill.offsetTop);
+      skill.scrollIntoView();
+      // event.preventDefault();
+      // controller.scrollTo(skill.offsetTop);
     };
 
     var linkClick = function lcc(event) {
       var id = this.getAttribute('href').slice(2);
       if (id.length > 0) {
-        event.preventDefault();
-        controller.scrollTo(document.getElementById(id).offsetTop);
-
+        // event.preventDefault();
         if (window.history && window.history.pushState) {
           history.pushState('', document.title, '#' + id);
         }
@@ -76,13 +95,15 @@
     };
 
     var scrollHandler = debounce(function cb() {
-      var scrollBarPosition = (window.pageYOffset || document.body.scrollTop);
-      if (scrollBarPosition !== 0) {
-        nav.classList.add('not-top');
-      } else {
-        nav.classList.remove('not-top');
-      }
-    }, 250);
+      var scrollBarPosition = window.scrollY;
+      requestAnimationFrame(function() {
+        if (scrollBarPosition !== 0) {
+          nav.classList.add('not-top');
+        } else {
+          nav.classList.remove('not-top');
+        }
+      });
+    }, 200);
 
     window.removeEventListener('DOMContentLoaded', load, false);
     window.addEventListener('scroll', scrollHandler);
@@ -93,15 +114,6 @@
       linksList[i].addEventListener('click', linkClicked, false);
     }
 
-    // form textarea auto resize - plugin
-    autosize(document.querySelectorAll('textarea'));
-
-    // smooth scroll
-    controller.scrollTo(function cb2(newpos) {
-      TweenLite.to(window, 1, { scrollTo: { y: newpos } });
-    });
-
-
     if (window.location.pathname === '/') {
       for (j = 0; j < links.length; j += 1) {
         links[j].addEventListener('click', linkClick, false);
@@ -111,8 +123,9 @@
     // load last 6 pens from my codepen using unofficial cpv2api (CORS)
     // and add them to last-code-pens section
     pens = penList();
-    $.getJSON('http://cpv2api.com/pens/public/kmiasko')
-      .done(function apiResp(resp) {
+    fetch('http://cpv2api.com/pens/public/kmiasko')
+      .then(function(response) { return response.json(); })
+      .then(function(resp) {
         for (var i = 0; i < resp.data.length; i++) {
           pens.add(penElement({
             title: resp.data[i].title,
@@ -122,7 +135,12 @@
         }
         pens.render(document.querySelector('.last-codepens'));
       });
+
+    contactInputAnimation();
+
+    // form textarea auto resize - plugin
+    autosize(document.querySelectorAll('textarea'));
   }
 
   window.addEventListener('DOMContentLoaded', load, false);
-}(window, jQuery));
+}(window, window.fetch));

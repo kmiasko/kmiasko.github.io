@@ -9,7 +9,7 @@
 title: Krzysztof Miąsko
 email: kmiasko@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
-  Krzysztof Miąsko - Frontend developer. Nowoczesne strony WWW, aplikacje internetowe.
+  Krzysztof Miąsko - Fullstack developer. Nowoczesne strony WWW, aplikacje internetowe.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://kmiasko.github.io" # the base hostname & protocol for your site
 exclude: [nclude-dependencies]
@@ -28,6 +28,6 @@ sass:
 collections:
   - portfolios
 
-gems:
+plugins:
   - jekyll-sitemap
 

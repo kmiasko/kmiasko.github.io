@@ -24,6 +24,7 @@ main
 .last-codepens,
 .portfolio
   +outer-container
+  background: #fff
 
 .navbar
   +size(100% modular-scale(5))
@@ -53,6 +54,23 @@ main
 .landing-page
   +position(relative)
   +size(100% 100%)
+  overflow: hidden
+  background: url("../img/back.jpg") center no-repeat
+  background-size: cover
+
+  // &::before
+  //   content: ''
+  //   position: fixed
+  //   top: 0
+  //   left: 0
+  //   width: 100%
+  //   height: 100%
+  //   background: url("../img/back.jpg") center no-repeat
+  //   background-size: cover
+  //   will-change: transform
+  //   z-index: -1
+  //   overflow: hidden
+  //   // transform: translateZ(0)
 
   &::after
     content: ""
@@ -72,7 +90,7 @@ main
 
   & > p
     font-size: modular-scale(4)
-    font-weight: 100
+    font-weight: 300
     margin: 0
     text-transform: uppercase
 
@@ -82,7 +100,6 @@ main
   .name
     text-align: center
     margin: modular-scale(1) 0
-    text-shadow: 0 0 1px rgba(0,0,0,0.6)
 
     p
       margin: 0
@@ -93,7 +110,6 @@ main
     h1
       font-size: modular-scale(4)
       margin: 0
-      text-transform: none
       font-weight: 300
 
 $opacity: 0.1
@@ -104,7 +120,7 @@ $opacity: 0.1
 
 
 .skills
-  padding: 6em 0 0
+  padding: 6em 0
 
   .skills__icon,
   h3
@@ -113,13 +129,13 @@ $opacity: 0.1
 
 
 .call-to-action
-  padding: modular-scale(6) 0
-  margin: modular-scale(7) auto
-  background: url('/img/phone_min.jpg') center center
-  background-size: cover
-  background-attachment: fixed
+  padding: 6em 0
   color: #fff
   text-shadow: 0 0 1px rgba(0,0,0,0.4)
+  position: relative
+  background: url('/img/phone_min.jpg') center center
+  background-size: cover
+  overflow: hidden
 
   a
     display: inline-block
@@ -130,10 +146,11 @@ $opacity: 0.1
 
 .contact
   +size(100% auto)
-  margin: 6em 0
-  padding-bottom: 2em
+  padding: 3em 0 6em
   text-align: center
 
+  h2
+    margin: 0 auto
 
   form
     width: 70%
@@ -150,23 +167,23 @@ $opacity: 0.1
     box-shadow: 0 1px 1px -1px rgba(255,255,255,0.3)
     padding-bottom: modular-scale(-2)
 
-  input ~ span::after,
-  textarea ~ span::after
-    content: ""
+  input ~ span,
+  textarea ~ span
+    width: 95%
+    height: 2px
     display: block
+    left: 50%
+    transform: translateX(-50%)
     position: absolute
     bottom: -2px
-    left: 50%
-    width: 0px
-    height: 3px
     background: $porcelain
-    transform: translateX(-50%)
-    transition: width 0.3s ease-out
+    opacity: 0
+    transition: opacity .3s
 
-  input:focus ~ span::after,
-  textarea:focus ~ span::after
-    width: 95%
-    transition: width 0.3s ease-out
+  input:focus ~ span,
+  textarea:focus ~ span
+    opacity: 1
+    transition: opacity .3s
 
   input[type="submit"]
     border-radius: .5em
@@ -185,19 +202,9 @@ $opacity: 0.1
     top: modular-scale(0)
     left: modular-scale(0)
     color: $porcelain
-    font-size: modular-scale(1)
-    transition: font-size 0.3s ease-in-out, translate 0.2s ease-in-out
-
-  input:focus ~ label,
-  textarea:focus ~ label
-    font-size: modular-scale(-2)
-    transform: translate(modular-scale(0), - modular-scale(-1))
-    transition: font-size 0.3s ease-in-out, translate 0.2s ease-in-out
 
   input:valid ~ label,
   textarea:valid ~ label
-    font-size: modular-scale(-2)
-    transform: translate(modular-scale(0), - modular-scale(-1))
     color: $pastelGreen
 
 .photos
@@ -205,13 +212,17 @@ $opacity: 0.1
 
 
 .about
+  h2
+    margin: 0 auto
+
   padding-bottom: modular-scale(4)
-  margin-bottom: modular-scale(5)
-  margin-top: modular-scale(6)
 
 .portfolio
+  padding-bottom: 10em
+
   h2
-    margin: modular-scale(2) auto modular-scale(4)
+    margin: 0 auto
+    padding: 3em 0
     text-align: center
 
   .portfolio-img
@@ -277,9 +288,13 @@ $opacity: 0.1
         font-size: 1.2em
 
 .last-codepens
+  padding-bottom: 3em
 
   .codepens-header
-    margin: modular-scale(6) 0 modular-scale(5)
+    padding: 6em 0
+
+    h2
+      margin: 0 auto
 
   .pen
     position: relative

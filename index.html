@@ -14,7 +14,7 @@ title: "Krzysztof Miąsko"
 			<p>Javascript</p>
 			<div class="name">
 				<h1 class="light">Krzysztof Miąsko</h1>
-				<p>Front-end Developer</p>
+				<p>Fullstack Developer</p>
 			</div>
 		</section>
     <div class="next-arrow"><a href="#skills"></a></div>
@@ -75,9 +75,9 @@ title: "Krzysztof Miąsko"
     <div class="portfolio-item">
       <div class="portfolio-img">
         {% if portfolio.image %}
-        <figure><img src="{{ portfolio.image }}" alt="old home">
-          <div class="p-item-hover"><a href="{{ portfolio.link }}" target="_blank"><i class="fa fa-2x fa-anchor"></i></a></div>
-        </figure>
+          <figure>
+            <a href="{{ portfolio.link }}"><img src="{{ portfolio.image }}" alt="old home"></a>
+          </figure>
         {% elsif portfolio.video %}
           <video controls poster="{{ portfolio.placeholder }}">
             {% assign url = v | split: '.' %}

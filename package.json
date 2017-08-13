@@ -14,9 +14,15 @@
     "autoprefixer": "^6.3.6",
     "bourbon": "^4.2.6",
     "bourbon-neat": "^1.7.2",
+    "browser-sync": "^2.18.13",
     "cssnano": "^3.7.1",
     "eslint": "^1.10.3",
     "eslint-config-airbnb": "^3.1.0",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^4.0.0",
+    "gulp-modernizr": "^1.0.0-alpha",
+    "gulp-print": "^2.0.1",
+    "gulp-sass": "^3.1.0",
     "postcss-cli": "^2.5.2",
     "uglify-js": "^2.6.2"
   }
