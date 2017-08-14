@@ -20,7 +20,7 @@ gulp.task('sass', function compileSass() {
     .pipe(pprint())
     .pipe(sass().on('error', sass.logError))
     .pipe(autoprefixer({ browsers: ['last 2 versions'] }))
-    .pipe(gulp.dest('./_site/vendor'));
+    .pipe(gulp.dest('./vendor'));
 });
 
 gulp.task('js', function compileJs() {
@@ -30,7 +30,7 @@ gulp.task('js', function compileJs() {
     .pipe(pprint())
     .pipe(gulpBabel({ presets: ['env', 'stage-2'] }))
     .pipe(gulpConcat('all.js'))
-    .pipe(gulp.dest('./_site/vendor'));
+    .pipe(gulp.dest('./vendor'));
 });
 
 gulp.task('build', ['sass', 'js']);
