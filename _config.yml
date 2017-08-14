@@ -16,14 +16,6 @@ exclude: [nclude-dependencies]
 
 # Build settings
 markdown: kramdown
-sass:
-  sass_dir: _sass
-  load_paths:
-    - _sass
-    - node_modules/bourbon/app/assets/stylesheets
-    - node_modules/bourbon
-    - node_modules/bourbon-neat/app/assets/stylesheets
-    - node_modules/bourbon-neat
 
 collections:
   - portfolios

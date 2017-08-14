@@ -1,38 +1,34 @@
-var penElement = (function(_penDetails) {
+const penElement = (function({ link, image, title }) {
 
-  var template_html = '' +
-  '<a href="{{link}}">' +
-    '<img src="{{image}}" alt="pen" />' +
-  '</a>' +
-  '<div class="pen__more"><i class="fa fa-ellipsis-v"></i></div>' +
-  '<div class="pen__details">' +
-    '<div class="pen__content">' +
-      '<p class="pen__title">{{title}}</p>' +
-      '<div class="pen__icons">' +
-        '<p>Udostępnij</p>' +
-        '<a href="https://www.facebook.com/sharer/sharer.php?u={{link}}"><i class="fa fa-facebook"></i></a>' +
-        '<a href="https://twitter.com/home?status=Pen by Krzysztof Miąsko {{link}}"><i class="fa fa-twitter"></i></a>' +
-        '<a href="https://plus.google.com/share?url={{link}}"><i class="fa fa-google-plus"></i></a>' +
-      '</div>' +
-    '</div>' +
-  '</div>' +
-  '</div>';
+  const template_html = `
+  <a href="${link}">
+    <img src="${image}" alt="pen" />
+  </a>
+  <div class="pen__more"><i class="fa fa-ellipsis-v"></i></div>
+  <div class="pen__details">
+    <div class="pen__content">
+      <p class="pen__title">${title}</p>
+      <div class="pen__icons">
+        <p>Udostępnij</p>
+        <a href="https://www.facebook.com/sharer/sharer.php?u=${link}"><i class="fa fa-facebook"></i></a>
+        <a href="https://twitter.com/home?status=Pen by Krzysztof Miąsko ${link}"><i class="fa fa-twitter"></i></a>
+        <a href="https://plus.google.com/share?url=${link}"><i class="fa fa-google-plus"></i></a>
+      </div>
+    </div>
+  </div>
+  </div>`;
 
-  var template,
-    container,
-    penDetails = {},
-    openButton,
-    detailsPopup;
+  const container = document.createElement('div');
+  let template = null;
+  let openButton = null;
+  let detailsPopup = null;
 
   function _init() {
-    template = Handlebars.compile(template_html);
-    container = document.createElement('div');
     container.classList.add('pen');
   }
 
   function _create() {
-    Object.assign(penDetails, _penDetails);
-    container.innerHTML = template(penDetails);
+    container.innerHTML = template_html;
     openButton = container.querySelector('.pen__more');
     detailsPopup = container.querySelector('.pen__details');
   }
@@ -58,17 +54,11 @@ var penElement = (function(_penDetails) {
 });
 
 var penList = (function() {
-  var pens = [];
-  var container = document.createDocumentFragment();
-
-  function add(pen) {
-    pens.push(pen);
-  }
-
-  function render(parent) {
-    pens.forEach(function(pen) {
-      container.appendChild(pen);
-    });
+  const pens = [];
+  const container = document.createDocumentFragment();
+  const add = (pen) => pens.push(pen);
+  const render = (parent) => {
+    pens.forEach((pen) => container.appendChild(pen));
     parent.appendChild(container);
   }
 
@@ -77,3 +67,4 @@ var penList = (function() {
     render: render
   };
 });
+

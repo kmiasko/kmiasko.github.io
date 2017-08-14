@@ -1,9 +1,18 @@
-/* global autosize, Handlebars, fetch, window, document */
+/* global window, document */
 
-(function ifee(window, fetch) {
-  'use strict';
 
-  function inputFocus(e) {
+(function ifee(window) {
+  const fetch = (url) => new Promise((resolve, reject) => {
+    const xhrequest = new XMLHttpRequest();
+    xhrequest.open('GET', url, true);
+    xhrequest.responseType = 'json';
+    xhrequest.send();
+
+    xhrequest.addEventListener("load", (e) =>  resolve(e.target.response.data));
+    xhrequest.addEventListener("error", (e) => reject(e));
+  });
+
+  const inputFocus = (e) => {
     e.stopPropagation();
     var label = e.target.parentNode.querySelector('label');
     var coords = label.getBoundingClientRect();
@@ -14,12 +23,12 @@
     }
   }
 
-  function inputBlur(e) {
+  const inputBlur = (e) => {
     e.stopPropagation();
-    var label = e.target.parentNode.querySelector('label');
-    var input = e.target.parentNode.querySelector('input');
-    var textarea = e.target.parentNode.querySelector('textarea');
-    var container = input || textarea;
+    const label = e.target.parentNode.querySelector('label');
+    const input = e.target.parentNode.querySelector('input');
+    const textarea = e.target.parentNode.querySelector('textarea');
+    const container = input || textarea;
 
     if (label.dataset.focused && label.dataset.focused === 'true') {
       if (!container.value) {
@@ -29,29 +38,33 @@
     }
   }
 
-  function contactInputAnimation() {
-    var container = document.getElementById('contact');
-    container.addEventListener('focus', inputFocus, true);
-    container.addEventListener('blur', inputBlur, true);
+  const contactInputAnimation = () => {
+    const container = document.getElementById('contact');
+    if (container) {
+      container.addEventListener('focus', inputFocus, true);
+      container.addEventListener('blur', inputBlur, true);
+    }
   }
 
-  function debounce(func, wait, immediate) {
-    var timeout;
-    return function anon() {
-      var _that = this;
-      var args = arguments;
-      var later = function later() {
+  const debounce = (func, wait, immediate) => {
+    let timeout;
+    return () => {
+      // var _that = this;
+      const args = arguments;
+      const later = () => {
         timeout = null;
         if (!immediate) {
-          func.apply(_that, args);
+          // func.apply(_that, args);
+          func.apply(this, args);
         }
       };
 
-      var callNow = immediate && !timeout;
+      const callNow = immediate && !timeout;
       clearTimeout(timeout);
       timeout = setTimeout(later, wait);
       if (callNow) {
-        func.apply(_that, args);
+        // func.apply(_that, args);
+        func.apply(this, args);
       }
     };
   }
@@ -59,43 +72,40 @@
   // called on document DOMContentLoaded event
 
   function load() {
-    var hamburger = document.querySelector('.hamburger');
-    var nav = document.querySelector('.navbar');
-    var linksList = nav.querySelectorAll('.nav-link');
-    var nextArrow = document.querySelector('.next-arrow');
-    var links = document.querySelectorAll('a[href^="/#"]');
-    var pens;
+    const hamburger = document.querySelector('.hamburger');
+    const nav = document.querySelector('.navbar');
+    const navLinks = nav.querySelector('.nav-links');
+    const nextArrow = document.querySelector('.next-arrow');
+    const background = document.querySelector('.landing-page-bg');
     var i = 0;
     var j = 0;
-    // var scrolling = false;
+    let scrollY = 0;
 
-    var hamburgerClicked = function hc() {
+
+    const hamburgerClicked = () => {
       nav.classList.toggle('nav-open');
     };
 
-    var linkClicked = function lc() {
+    const linkClicked = () => {
       nav.classList.remove('nav-open');
     };
 
-    var nextArrowClicked = function nac(event) {
-      var skill = document.getElementById('skills');
+    const nextArrowClicked = (event) => {
+      const skill = document.getElementById('skills');
       skill.scrollIntoView();
-      // event.preventDefault();
-      // controller.scrollTo(skill.offsetTop);
     };
 
-    var linkClick = function lcc(event) {
-      var id = this.getAttribute('href').slice(2);
+    const linkClick = function(event) {
+      const id = event.target.parentNode.getAttribute('href').slice(2);
       if (id.length > 0) {
-        // event.preventDefault();
         if (window.history && window.history.pushState) {
           history.pushState('', document.title, '#' + id);
         }
       }
     };
 
-    var scrollHandler = debounce(function cb() {
-      var scrollBarPosition = window.scrollY;
+    const scrollHandler = debounce(function cb() {
+      const scrollBarPosition = window.scrollY;
       requestAnimationFrame(function() {
         if (scrollBarPosition !== 0) {
           nav.classList.add('not-top');
@@ -105,37 +115,38 @@
       });
     }, 200);
 
-    window.removeEventListener('DOMContentLoaded', load, false);
-    window.addEventListener('scroll', scrollHandler);
-    hamburger.addEventListener('click', hamburgerClicked, false);
-    nextArrow.addEventListener('click', nextArrowClicked, false);
-
-    for (i = 0; i < linksList.length; i += 1) {
-      linksList[i].addEventListener('click', linkClicked, false);
+    const scrollBackground = () => {
+      background.style = `transform: translateY(-${scrollY}px)`;
     }
 
-    if (window.location.pathname === '/') {
-      for (j = 0; j < links.length; j += 1) {
-        links[j].addEventListener('click', linkClick, false);
-      }
+    const backgroundScroll = (e) => {
+      scrollY = window.scrollY;
+      requestAnimationFrame(() => scrollBackground());
+    };
+
+    window.removeEventListener('DOMContentLoaded', load);
+    window.addEventListener('scroll', scrollHandler);
+    hamburger.addEventListener('click', hamburgerClicked);
+    navLinks.addEventListener('click', linkClick);
+    if (nextArrow) {
+      nextArrow.addEventListener('click', nextArrowClicked);
+      window.addEventListener('scroll', backgroundScroll);
+      fetch('http://cpv2api.com/pens/public/kmiasko')
+        .then((resp) => {
+          const pens = penList();
+          for (let i = 0, len = resp.length; i < len; i++) {
+            pens.add(penElement({
+              title: resp[i].title,
+              link: resp[i].link,
+              image: resp[i].images.small
+            }));
+          }
+          pens.render(document.querySelector('.last-codepens'));
+        });
     }
 
     // load last 6 pens from my codepen using unofficial cpv2api (CORS)
     // and add them to last-code-pens section
-    pens = penList();
-    fetch('http://cpv2api.com/pens/public/kmiasko')
-      .then(function(response) { return response.json(); })
-      .then(function(resp) {
-        for (var i = 0; i < resp.data.length; i++) {
-          pens.add(penElement({
-            title: resp.data[i].title,
-            link: resp.data[i].link,
-            image: resp.data[i].images.small
-          }));
-        }
-        pens.render(document.querySelector('.last-codepens'));
-      });
-
     contactInputAnimation();
 
     // form textarea auto resize - plugin
@@ -143,4 +154,5 @@
   }
 
   window.addEventListener('DOMContentLoaded', load, false);
-}(window, window.fetch));
+}(window));
+
