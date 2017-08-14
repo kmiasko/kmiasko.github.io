@@ -7,16 +7,16 @@ var gulpConcat = require('gulp-concat');
 
 gulp.task('serve', ['sass', 'js'], function serveFiles() {
   'use strict';
-  gulp.watch('./css/*.sass', ['sass']);
-  gulp.watch('./_sass/*.sass', ['sass']);
-  gulp.watch('./js/*.js', ['js']);
+  gulp.watch('./_css/**/*.sass', ['sass']);
+  gulp.watch('./_sass/**/*.sass', ['sass']);
+  gulp.watch('./_js/**/*.js', ['js']);
 });
 
 
 gulp.task('sass', function compileSass() {
   'use strict';
   return gulp
-    .src('./css/main.sass')
+    .src('./_css/main.sass')
     .pipe(pprint())
     .pipe(sass().on('error', sass.logError))
     .pipe(autoprefixer({ browsers: ['last 2 versions'] }))
@@ -26,7 +26,7 @@ gulp.task('sass', function compileSass() {
 gulp.task('js', function compileJs() {
   'use strict';
   return gulp
-    .src(['./js/*.js'])
+    .src(['./_js/**/*.js'])
     .pipe(pprint())
     .pipe(gulpBabel({ presets: ['env', 'stage-2'] }))
     .pipe(gulpConcat('all.js'))
