@@ -143,7 +143,6 @@
         .then((resp) => {
           const pens = penList();
           const items = resp.query.results.item;
-          console.log(items);
           for (let i = 0, len = items.length; i < len; i++) {
             pens.add(penElement({
               title: items[i].title,

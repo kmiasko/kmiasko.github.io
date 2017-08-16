@@ -450,7 +450,6 @@
       fetch("https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20rss%20where%20url%3D\'https%3A%2F%2Fcodepen.io%2Fkmiasko%2Fpublic%2Ffeed\'%20limit%206&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys").then(function (resp) {
         var pens = penList();
         var items = resp.query.results.item;
-        console.log(items);
         for (var _i = 0, len = items.length; _i < len; _i++) {
           pens.add(penElement({
             title: items[_i].title,
