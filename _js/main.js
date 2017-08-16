@@ -8,7 +8,7 @@
     xhrequest.responseType = 'json';
     xhrequest.send();
 
-    xhrequest.addEventListener("load", (e) =>  resolve(e.target.response.data));
+    xhrequest.addEventListener("load", (e) =>  resolve(e.target.response));
     xhrequest.addEventListener("error", (e) => reject(e));
   });
 
@@ -124,25 +124,36 @@
       requestAnimationFrame(() => scrollBackground());
     };
 
+    const getImage = (html) => {
+      const div = document.createElement('div');
+      div.innerHTML = html;
+      const img = div.querySelector('img');
+      return img.src;
+    }
+
     window.removeEventListener('DOMContentLoaded', load);
     window.addEventListener('scroll', scrollHandler);
     hamburger.addEventListener('click', hamburgerClicked);
     navLinks.addEventListener('click', linkClick);
+
     if (nextArrow) {
       nextArrow.addEventListener('click', nextArrowClicked);
       window.addEventListener('scroll', backgroundScroll);
-      fetch('http://cpv2api.com/pens/public/kmiasko')
+      fetch("https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20rss%20where%20url%3D\'https%3A%2F%2Fcodepen.io%2Fkmiasko%2Fpublic%2Ffeed\'%20limit%206&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys")
         .then((resp) => {
           const pens = penList();
-          for (let i = 0, len = resp.length; i < len; i++) {
+          const items = resp.query.results.item;
+          console.log(items);
+          for (let i = 0, len = items.length; i < len; i++) {
             pens.add(penElement({
-              title: resp[i].title,
-              link: resp[i].link,
-              image: resp[i].images.small
+              title: items[i].title,
+              link: items[i].link,
+              image: getImage(items[i].description),
             }));
           }
           pens.render(document.querySelector('.last-codepens'));
-        });
+        })
+        .catch(error => console.log(error));
     }
 
     // load last 6 pens from my codepen using unofficial cpv2api (CORS)

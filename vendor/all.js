@@ -311,7 +311,7 @@
       xhrequest.send();
 
       xhrequest.addEventListener("load", function (e) {
-        return resolve(e.target.response.data);
+        return resolve(e.target.response);
       });
       xhrequest.addEventListener("error", function (e) {
         return reject(e);
@@ -432,23 +432,35 @@
       });
     };
 
+    var getImage = function getImage(html) {
+      var div = document.createElement('div');
+      div.innerHTML = html;
+      var img = div.querySelector('img');
+      return img.src;
+    };
+
     window.removeEventListener('DOMContentLoaded', load);
     window.addEventListener('scroll', scrollHandler);
     hamburger.addEventListener('click', hamburgerClicked);
     navLinks.addEventListener('click', linkClick);
+
     if (nextArrow) {
       nextArrow.addEventListener('click', nextArrowClicked);
       window.addEventListener('scroll', backgroundScroll);
-      fetch('http://cpv2api.com/pens/public/kmiasko').then(function (resp) {
+      fetch("https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20rss%20where%20url%3D\'https%3A%2F%2Fcodepen.io%2Fkmiasko%2Fpublic%2Ffeed\'%20limit%206&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys").then(function (resp) {
         var pens = penList();
-        for (var _i = 0, len = resp.length; _i < len; _i++) {
+        var items = resp.query.results.item;
+        console.log(items);
+        for (var _i = 0, len = items.length; _i < len; _i++) {
           pens.add(penElement({
-            title: resp[_i].title,
-            link: resp[_i].link,
-            image: resp[_i].images.small
+            title: items[_i].title,
+            link: items[_i].link,
+            image: getImage(items[_i].description)
           }));
         }
         pens.render(document.querySelector('.last-codepens'));
+      }).catch(function (error) {
+        return console.log(error);
       });
     }
 
