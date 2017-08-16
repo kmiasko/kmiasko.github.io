@@ -9,7 +9,7 @@ title: "Krzysztof Miąsko - Blog"
   </header>
   <div class="posts">
     <ul class="post-list">
-      {% assign posts = (site.posts | sort: 'date' | reversed) %}
+      {% assign posts = site.posts | sort: 'date' | reversed %}
       {% for post in posts %}
       <li>
         <h2>
