@@ -458,7 +458,6 @@
     };
 
     var intersection = function intersection(entries) {
-      console.log(entries);
       entries.forEach(function (entry) {
         if (entry.intersectionRatio > 0) {
           observer.unobserve(entry.target);

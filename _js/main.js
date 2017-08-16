@@ -149,7 +149,6 @@
         .catch(error => console.log(error));
 
     const intersection = (entries) => {
-      console.log(entries);
       entries.forEach(entry => {
         if (entry.intersectionRatio > 0) {
           observer.unobserve(entry.target);
