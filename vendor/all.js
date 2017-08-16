@@ -387,6 +387,7 @@
     var i = 0;
     var j = 0;
     var scrollY = 0;
+    var observer = null;
 
     var hamburgerClicked = function hamburgerClicked() {
       nav.classList.toggle('nav-open');
@@ -439,15 +440,8 @@
       return img.src;
     };
 
-    window.removeEventListener('DOMContentLoaded', load);
-    window.addEventListener('scroll', scrollHandler);
-    hamburger.addEventListener('click', hamburgerClicked);
-    navLinks.addEventListener('click', linkClick);
-
-    if (nextArrow) {
-      nextArrow.addEventListener('click', nextArrowClicked);
-      window.addEventListener('scroll', backgroundScroll);
-      fetch("https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20rss%20where%20url%3D\'https%3A%2F%2Fcodepen.io%2Fkmiasko%2Fpublic%2Ffeed\'%20limit%206&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys").then(function (resp) {
+    var loadCodepens = function loadCodepens() {
+      return fetch("https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20rss%20where%20url%3D\'https%3A%2F%2Fcodepen.io%2Fkmiasko%2Fpublic%2Ffeed\'%20limit%206&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys").then(function (resp) {
         var pens = penList();
         var items = resp.query.results.item;
         for (var _i = 0, len = items.length; _i < len; _i++) {
@@ -461,6 +455,34 @@
       }).catch(function (error) {
         return console.log(error);
       });
+    };
+
+    var intersection = function intersection(entries) {
+      console.log(entries);
+      entries.forEach(function (entry) {
+        if (entry.intersectionRatio > 0) {
+          observer.unobserve(entry.target);
+          loadCodepens();
+        }
+      });
+    };
+
+    window.removeEventListener('DOMContentLoaded', load);
+    window.addEventListener('scroll', scrollHandler);
+    hamburger.addEventListener('click', hamburgerClicked);
+    navLinks.addEventListener('click', linkClick);
+
+    if (nextArrow) {
+      nextArrow.addEventListener('click', nextArrowClicked);
+      window.addEventListener('scroll', backgroundScroll);
+
+      if (!('IntersectionObserver' in window)) {
+        loadCodepens();
+      } else {
+        observer = new IntersectionObserver(intersection, { rootMargin: '50px 0px', threshold: 0.01 });
+        var codepens = document.querySelector('.last-codepens');
+        observer.observe(codepens);
+      }
     }
 
     // load last 6 pens from my codepen using unofficial cpv2api (CORS)
