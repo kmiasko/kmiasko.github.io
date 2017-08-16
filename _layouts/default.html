@@ -20,6 +20,7 @@
       ga('send', 'pageview');
 
     </script>
-    <script src="{{ "/vendor/all.js" | prepend: site.baseurl }}"></script>
+    {% comment %} <script src="{{ "/vendor/all.min.js" | prepend: site.baseurl }}"></script> {% endcomment %}
+    <script src="{{ "/vendor/all.min.js" | prepend: site.baseurl }}"></script>
   </body>
 </html>

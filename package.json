@@ -4,9 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build:js": "mkdir -p vendor && uglifyjs js/*.js -m -c -o vendor/all.js",
-    "build:css": "postcss --use autoprefixer -c options.json --use cssnano _site/css/main.css | csso -o vendor/main.css",
-    "build": "jekyll build && npm run build:js && npm run build:css"
+    "build": "gulp build && jekyll build"
   },
   "author": "Krzysztof Miąsko",
   "license": "ISC",
@@ -30,10 +28,14 @@
     "gulp-babel": "^7.0.0",
     "gulp-browserify": "^0.5.1",
     "gulp-concat": "^2.6.1",
+    "gulp-csso": "^3.0.0",
     "gulp-modernizr": "^1.0.0-alpha",
     "gulp-print": "^2.0.1",
+    "gulp-rename": "^1.2.2",
     "gulp-sass": "^3.1.0",
+    "gulp-uglify": "^3.0.0",
     "postcss-cli": "^2.5.2",
+    "run-sequence": "^2.1.0",
     "uglify-js": "^2.6.2",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0"

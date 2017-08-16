@@ -80,7 +80,7 @@ title: "Krzysztof Miąsko"
             <a href="{{ portfolio.link }}"><img src="{{ portfolio.image }}" alt="old home"></a>
           </figure>
         {% elsif portfolio.video %}
-          <video controls poster="{{ portfolio.placeholder }}">
+          <video controls poster="{{ portfolio.placeholder }}" preload="none">
             {% assign url = v | split: '.' %}
               <source src="{{ portfolio.video }}" type={{ url[1] }}></source>
           </video>
