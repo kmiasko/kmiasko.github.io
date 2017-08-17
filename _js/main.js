@@ -141,7 +141,7 @@
             pens.add(penElement({
               title: items[i].title,
               link: items[i].link,
-              image: getImage(items[i].description),
+              image: getImage(items[i].description).replace('large', 'small'),
             }));
           }
           pens.render(document.querySelector('.last-codepens'));

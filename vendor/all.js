@@ -448,7 +448,7 @@
           pens.add(penElement({
             title: items[_i].title,
             link: items[_i].link,
-            image: getImage(items[_i].description)
+            image: getImage(items[_i].description).replace('large', 'small')
           }));
         }
         pens.render(document.querySelector('.last-codepens'));
