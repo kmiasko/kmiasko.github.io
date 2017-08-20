@@ -489,7 +489,7 @@
     contactInputAnimation();
 
     // form textarea auto resize - plugin
-    autosize(document.querySelectorAll('textarea'));
+    // autosize(document.querySelectorAll('textarea'));
   }
 
   window.addEventListener('DOMContentLoaded', load, false);
