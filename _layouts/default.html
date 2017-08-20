@@ -21,15 +21,15 @@
 
     </script>
     {% comment %} <script src="{{ "/vendor/all.min.js" | prepend: site.baseurl }}"></script> {% endcomment %}
-    <script src="{{ "/vendor/all.min.js" | prepend: site.baseurl }}"></script>
     <script>var cb = function() {
       var l = document.createElement('link'); l.rel = 'stylesheet';
-      l.href = '/vendor/main.min.css';
+      l.href = 'PATH_TO_COMBINED_CSS_FILE';
       var h = document.getElementsByTagName('head')[0]; h.parentNode.insertBefore(l, h);
     };
-      var raf = requestAnimationFrame || mozRequestAnimationFrame ||
-        webkitRequestAnimationFrame || msRequestAnimationFrame;
-      if (raf) raf(cb);
-      else window.addEventListener('load', cb);</script>
+var raf = requestAnimationFrame || mozRequestAnimationFrame ||
+  webkitRequestAnimationFrame || msRequestAnimationFrame;
+if (raf) raf(cb);
+    else window.addEventListener('load', cb);</script>
+    <script src="{{ "/vendor/all.min.js" | prepend: site.baseurl }}"></script>
 </body>
 </html>
