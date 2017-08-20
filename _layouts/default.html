@@ -23,7 +23,7 @@
     {% comment %} <script src="{{ "/vendor/all.min.js" | prepend: site.baseurl }}"></script> {% endcomment %}
     <script>var cb = function() {
       var l = document.createElement('link'); l.rel = 'stylesheet';
-      l.href = 'PATH_TO_COMBINED_CSS_FILE';
+      l.href = '/vendor/main.min.css';
       var h = document.getElementsByTagName('head')[0]; h.parentNode.insertBefore(l, h);
     };
 var raf = requestAnimationFrame || mozRequestAnimationFrame ||
