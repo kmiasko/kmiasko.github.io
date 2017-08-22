@@ -30,6 +30,6 @@ var raf = requestAnimationFrame || mozRequestAnimationFrame ||
   webkitRequestAnimationFrame || msRequestAnimationFrame;
 if (raf) raf(cb);
     else window.addEventListener('load', cb);</script>
-    <script src="{{ "/vendor/all.min.js" | prepend: site.baseurl }}" async></script>
+    <script src="{{ "/vendor/all.min.js" | prepend: site.baseurl }}" defer></script>
 </body>
 </html>
