@@ -169,6 +169,37 @@
       });
     };
 
+    var resizeTextarea = function resizeTextarea(element) {
+      var observe = void 0;
+      if (window.attachEvent) {
+        observe = function observe(element, event, handler) {
+          element.attachEvent('on' + event, handler);
+        };
+      } else {
+        observe = function observe(element, event, handler) {
+          element.addEventListener(event, handler, false);
+        };
+      }
+
+      function resize() {
+        element.style.height = 'auto';
+        element.style.height = element.scrollHeight + 20 + 'px';
+      }
+
+      function delayedResize() {
+        window.setTimeout(resize, 0);
+      }
+      observe(element, 'change', resize);
+      observe(element, 'cut', delayedResize);
+      observe(element, 'paste', delayedResize);
+      observe(element, 'drop', delayedResize);
+      observe(element, 'keydown', delayedResize);
+
+      element.focus();
+      element.select();
+      resize();
+    };
+
     window.removeEventListener('DOMContentLoaded', load);
     window.addEventListener('scroll', scrollHandler);
     hamburger.addEventListener('click', hamburgerClicked);
@@ -192,7 +223,7 @@
     contactInputAnimation();
 
     // form textarea auto resize - plugin
-    autosize(document.querySelectorAll('textarea'));
+    resizeTextarea(document.querySelector('textarea'));
   }
 
   window.addEventListener('DOMContentLoaded', load, false);
