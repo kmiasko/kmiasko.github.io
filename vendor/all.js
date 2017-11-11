@@ -196,8 +196,8 @@
       observe(element, 'drop', delayedResize);
       observe(element, 'keydown', delayedResize);
 
-      element.focus();
-      element.select();
+      // element.focus();
+      // element.select();
       resize();
     };
 
