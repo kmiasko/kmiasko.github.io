@@ -486,7 +486,13 @@ main {
   height: auto;
   width: 100%;
   padding: 3em 0 6em;
-  text-align: center; }
+  text-align: center;
+  textarea-overflow: hidden;
+  textarea-outline: none;
+  textarea-min-height: 34px;
+  textarea-max-height: 350px;
+  textarea-height: auto;
+  textarea-resize: none; }
   .contact h2 {
     margin: 0 auto; }
   .contact form {

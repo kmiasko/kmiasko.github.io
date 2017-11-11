@@ -154,7 +154,6 @@ $opacity: 0.1
     > div
       position: relative
 
-
   input,
   textarea
     display: block
@@ -201,6 +200,14 @@ $opacity: 0.1
   input:valid ~ label,
   textarea:valid ~ label
     color: $pastelGreen
+
+  textarea:
+    overflow: hidden
+    outline: none
+    min-height: 34px
+    max-height: 350px
+    height: auto
+    resize: none
 
 .photos
   background: $black-large-opacity
