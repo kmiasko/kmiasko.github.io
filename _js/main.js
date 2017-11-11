@@ -172,7 +172,7 @@
 
       function resize () {
         element.style.height = 'auto';
-        element.style.height = (element.scrollHeight+25)+'px';
+        element.style.height = (element.scrollHeight+26)+'px';
       }
 
       function delayedResize () {
