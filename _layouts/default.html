@@ -26,10 +26,10 @@
       l.href = '/vendor/main.min.css';
       var h = document.getElementsByTagName('head')[0]; h.parentNode.insertBefore(l, h);
     };
-var raf = requestAnimationFrame || mozRequestAnimationFrame ||
-  webkitRequestAnimationFrame || msRequestAnimationFrame;
-if (raf) raf(cb);
-    else window.addEventListener('load', cb);</script>
-    <script src="{{ "/vendor/all.min.js" | prepend: site.baseurl }}" defer></script>
+    var raf = requestAnimationFrame || mozRequestAnimationFrame ||
+      webkitRequestAnimationFrame || msRequestAnimationFrame;
+    if (raf) raf(cb);
+        else window.addEventListener('load', cb);</script>
+        <script src="{{ "/vendor/all.min.js" | prepend: site.baseurl }}" defer></script>
 </body>
 </html>
