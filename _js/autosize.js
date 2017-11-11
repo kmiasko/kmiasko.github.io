@@ -76,9 +76,9 @@
 			}
 
 			if (style.boxSizing === 'content-box') {
-				heightOffset = -(parseFloat(style.paddingTop) + parseFloat(style.paddingBottom)) * 2;
+				heightOffset = -(parseFloat(style.paddingTop) + parseFloat(style.paddingBottom));
 			} else {
-				heightOffset = parseFloat(style.borderTopWidth) + parseFloat(style.borderBottomWidth) * 2;
+				heightOffset = parseFloat(style.borderTopWidth) + parseFloat(style.borderBottomWidth);
 			}
 			// Fix when a textarea is not on document body and heightOffset is Not a Number
 			if (isNaN(heightOffset)) {
