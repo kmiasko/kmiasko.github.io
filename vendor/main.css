@@ -488,6 +488,8 @@ main {
   padding: 3em 0 6em;
   text-align: center;
   textarea-overflow: hidden;
+  textarea-overflow-x: hidden;
+  textarea-overflow-y: hidden;
   textarea-outline: none;
   textarea-min-height: 34px;
   textarea-max-height: 350px;

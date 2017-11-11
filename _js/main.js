@@ -172,12 +172,13 @@
 
       function resize () {
         element.style.height = 'auto';
-        element.style.height = (element.scrollHeight+20)+'px';
+        element.style.height = (element.scrollHeight+25)+'px';
       }
 
       function delayedResize () {
         window.setTimeout(resize, 0);
       }
+
       observe(element, 'change',  resize);
       observe(element, 'cut',     delayedResize);
       observe(element, 'paste',   delayedResize);
