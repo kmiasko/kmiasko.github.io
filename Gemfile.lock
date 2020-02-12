@@ -210,7 +210,7 @@ GEM
       method_source (~> 0.8.1)
       slop (~> 3.4)
     public_suffix (2.0.5)
-    rack (2.0.3)
+    rack (2.2.2)
     rack-livereload (0.3.16)
       rack
     rb-fsevent (0.10.2)
