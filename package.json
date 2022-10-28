@@ -23,7 +23,7 @@
     "cssnano": "^3.7.1",
     "eslint": "^1.10.3",
     "eslint-config-airbnb": "^3.1.0",
-    "gulp": "^3.9.1",
+    "gulp": "^4.0.2",
     "gulp-autoprefixer": "^4.0.0",
     "gulp-babel": "^7.0.0",
     "gulp-browserify": "^0.5.1",
