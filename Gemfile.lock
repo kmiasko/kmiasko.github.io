@@ -234,7 +234,7 @@ GEM
       slop (~> 3.4)
     public_suffix (2.0.5)
     racc (1.6.1)
-    rack (2.2.4)
+    rack (2.2.6.4)
     rack-livereload (0.3.16)
       rack
     rb-fsevent (0.10.2)
